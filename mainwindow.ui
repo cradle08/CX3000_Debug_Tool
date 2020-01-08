@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>816</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="gBx_Control">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>181</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>本地网络设置</string>
+    </property>
+    <widget class="QComboBox" name="comboBox_localIP">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>30</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>本地端口：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>本地IP：</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_localPort">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>70</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>181</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>远程网络设置</string>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>远程端口：</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>远程IP：</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_remotePort">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>70</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_remoteIP">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>30</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>0</y>
+      <width>611</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="widget">
+     <attribute name="title">
+      <string>外设控制界面</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>338</width>
+        <height>55</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>进出仓控制</string>
+      </property>
+      <widget class="QPushButton" name="pBtn_mainMotorIn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>22</y>
+         <width>71</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>主电机进仓</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_mainMotorOut">
+       <property name="geometry">
+        <rect>
+         <x>91</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>主电机出仓</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_cangIn">
+       <property name="geometry">
+        <rect>
+         <x>176</x>
+         <y>22</y>
+         <width>71</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>计数仓进仓</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_cangOut">
+       <property name="geometry">
+        <rect>
+         <x>257</x>
+         <y>22</y>
+         <width>71</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>计数仓出仓</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>69</y>
+        <width>341</width>
+        <height>55</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>LED灯控制</string>
+      </property>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>22</y>
+         <width>54</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>LED编号：</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_ledNum">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>23</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_ledOpen">
+       <property name="geometry">
+        <rect>
+         <x>165</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>灯开</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_ledClose">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>灯关</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>8</y>
+        <width>338</width>
+        <height>55</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>阀控制</string>
+      </property>
+      <widget class="QPushButton" name="pBtn_liquidValveOpen">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>吸液阀开</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_airValveOpen">
+       <property name="geometry">
+        <rect>
+         <x>172</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>建压阀开</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_liquidValveClose">
+       <property name="geometry">
+        <rect>
+         <x>91</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>吸液阀关</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pBtn_airValveClose">
+       <property name="geometry">
+        <rect>
+         <x>253</x>
+         <y>22</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>建压阀关</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>121</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>泵控制</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="pBtn_pumpOpen">
+         <property name="text">
+          <string>泵开</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pBtn_pumpClose">
+         <property name="text">
+          <string>泵关</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>泵速：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="text">
+          <string>1500</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pBtn_pumpSpeedSet">
+         <property name="text">
+          <string>泵速设置</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>190</y>
+        <width>211</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>测试</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pBtn_WBCTest">
+         <property name="text">
+          <string>WBC测试</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pBtn_RBCPLT_Test">
+         <property name="text">
+          <string>RBC_PLT测试</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pBtn_setHGBMode">
+         <property name="text">
+          <string>HGB测试模式</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pBtn_setCRPMode">
+         <property name="text">
+          <string>CRP模式模式</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pBtn_backGroundCRP">
+         <property name="text">
+          <string>CRP本底测试</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pBtn_CRPTest">
+         <property name="text">
+          <string>CRP测试</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pBtn_backGroundHGB">
+         <property name="text">
+          <string>HGB本底测试</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pBtn_HGBTest">
+         <property name="text">
+          <string>HGB测试</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>10</y>
+        <width>231</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>自检及老化</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pBtn_airLightSelfCheck">
+         <property name="text">
+          <string>密闭性自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pBtn_currentSelfCheck">
+         <property name="text">
+          <string>恒流源自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pBtn_airValveSelfCheck">
+         <property name="text">
+          <string>建压阀自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pBtn_motorInSelfCheck">
+         <property name="text">
+          <string>进仓自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pBtn_liquidValveSelfCheck">
+         <property name="text">
+          <string>吸液阀自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pBtn_pumpSelfCheck">
+         <property name="text">
+          <string>泵自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pBtn_motorOutSelfCheck">
+         <property name="text">
+          <string>出仓自检</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pBtn_buildPressSelfCheck">
+         <property name="text">
+          <string>建压自检</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_2">
+     <attribute name="title">
+      <string>状态及参数界面</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pBtn_UDPOpen">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>240</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>UDP打开</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pBtn_UDPClose">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>240</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>UDP关闭</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_selfMsg">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>171</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>自定义消息</string>
+    </property>
+    <widget class="QPushButton" name="pBtn_selfDefineMsg">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>发送自定义消息</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit_selfDefineMsg">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>151</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <zorder>tabWidget</zorder>
+   <zorder>gBx_Control</zorder>
+   <zorder>groupBox_2</zorder>
+   <zorder>pBtn_UDPOpen</zorder>
+   <zorder>pBtn_UDPClose</zorder>
+   <zorder>groupBox_selfMsg</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>816</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menuTool"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>comboBox_localIP</tabstop>
+  <tabstop>lineEdit_localPort</tabstop>
+  <tabstop>pBtn_UDPOpen</tabstop>
+  <tabstop>pBtn_UDPClose</tabstop>
+  <tabstop>lineEdit_remoteIP</tabstop>
+  <tabstop>lineEdit_remotePort</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

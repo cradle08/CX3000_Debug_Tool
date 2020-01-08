@@ -1,0 +1,50 @@
+1:
+QByteArray ba = src.toLatin1();//QString 转换为 char*  
+const char *s = ba.data();  
+
+2 combobox
+QStringList list;
+list << "beijing" << "shanghai" << "shenzhen";
+ui->combobox->addItem(list);
+
+3
+状态及参数查询
+
+
+
+choseInterface()
+{
+	QCombobox *combobox = new QCombobox(this);
+	QList<QHostAddress> addrList = QNetworkInterface::allAddresses();
+	foreach(QHostAddress addr, addrList)
+	{
+		combobox->addItem(addr.toString);
+	
+	}
+
+
+}
+
+
+
+  void Server::initSocket()
+  {
+      udpSocket = new QUdpSocket(this);
+      udpSocket->bind(QHostAddress::LocalHost, 7755);
+
+      connect(udpSocket, SIGNAL(readyRead()),
+              this, SLOT(readPendingDatagrams()));
+  }
+
+  void Server::readPendingDatagrams()
+  {
+      while (udpSocket->hasPendingDatagrams()) {
+          QNetworkDatagram datagram = udpSocket->receiveDatagram();
+          processTheDatagram(datagram);
+      }
+  }
+
+
+4:
+QObject* sender = QObject::sender();
+qDebug() << ((QPushButton*)sender())->text();
