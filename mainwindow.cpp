@@ -94,6 +94,42 @@ void MainWindow::Send_TestCmd()
 
 }
 
+void MainWindow::Recv_Msg_Handler()
+{
+    qDebug() << "Recv Msg";
+    while(socketUdp->hasPendingDatagrams())
+    {
+        QByteArray RecvData;
+        QHostAddress stRecvAddr;
+        quint16 nRecvPort;
+
+        qint64 nLen = socketUdp->pendingDatagramSize();
+        if(nLen > 0)
+        {
+            RecvData.resize(nLen);
+            socketUdp->readDatagram(RecvData.data(), nLen, &stRecvAddr, &nRecvPort);
+            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort;
+            QString strData = RecvData.data();
+            qDebug() << strData;
+        }
+        //QNetworkDatagram datagram = socketUdp->receiveDatagram();
+    }
+}
+
+void MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn)
+{
+    //QPushButton btn = button;
+    QString str = pBtn->objectName();
+
+    str = str.mid(str.indexOf("_") + 1);
+    configIni->beginGroup("Protocol");
+    QString msg = configIni->value(str).toString();
+    configIni->endGroup();
+    qDebug()<<str <<"="<< msg;
+
+    QByteArray data = msg.toUtf8();
+    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
+}
 
 
 void MainWindow::on_comboBox_localIP_currentIndexChanged(const QString &arg1)
@@ -184,44 +220,6 @@ void MainWindow::on_pBtn_UDPClose_clicked()
     ui->comboBox_localIP->setEnabled(true);
     ui->lineEdit_localPort->setEnabled(true);
     label_barStatus->setText("UDP Close");
-}
-
-
-void MainWindow::Recv_Msg_Handler()
-{
-    qDebug() << "Recv Msg";
-    while(socketUdp->hasPendingDatagrams())
-    {
-        QByteArray RecvData;
-        QHostAddress stRecvAddr;
-        quint16 nRecvPort;
-
-        qint64 nLen = socketUdp->pendingDatagramSize();
-        if(nLen > 0)
-        {
-            RecvData.resize(nLen);
-            socketUdp->readDatagram(RecvData.data(), nLen, &stRecvAddr, &nRecvPort);
-            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort;
-            QString strData = RecvData.data();
-            qDebug() << strData;
-        }
-        //QNetworkDatagram datagram = socketUdp->receiveDatagram();
-    }
-}
-
-void MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn)
-{
-    //QPushButton btn = button;
-    QString str = pBtn->objectName();
-
-    str = str.mid(str.indexOf("_") + 1);
-    configIni->beginGroup("Protocol");
-    QString msg = configIni->value(str).toString();
-    configIni->endGroup();
-    qDebug()<<str <<"="<< msg;
-
-    QByteArray data = msg.toUtf8();
-    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
 
 void MainWindow::on_pBtn_liquidValveClose_clicked()
