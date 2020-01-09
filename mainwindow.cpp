@@ -125,9 +125,8 @@ void MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn)
     configIni->beginGroup("Protocol");
     QString msg = configIni->value(str).toString();
     configIni->endGroup();
-    qDebug()<<str <<"="<< msg;
-
-    QByteArray data = msg.toUtf8();
+    qDebug()<<str <<"=" << msg;
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
 
@@ -400,6 +399,6 @@ void MainWindow::on_pBtn_selfDefineMsg_clicked()
 {
     QString msg = ui->textEdit_selfDefineMsg->toPlainText();
     qDebug() << msg;
-    QByteArray data = msg.toUtf8();
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }

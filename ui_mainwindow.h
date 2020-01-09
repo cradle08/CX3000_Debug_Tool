@@ -425,7 +425,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(widget_2), QApplication::translate("MainWindow", "\347\212\266\346\200\201\345\217\212\345\217\202\346\225\260\347\225\214\351\235\242", nullptr));
         pBtn_UDPOpen->setText(QApplication::translate("MainWindow", "UDP\346\211\223\345\274\200", nullptr));
         pBtn_UDPClose->setText(QApplication::translate("MainWindow", "UDP\345\205\263\351\227\255", nullptr));
-        groupBox_selfMsg->setTitle(QApplication::translate("MainWindow", "\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257", nullptr));
+        groupBox_selfMsg->setTitle(QApplication::translate("MainWindow", "\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257(HEX)", nullptr));
         pBtn_selfDefineMsg->setText(QApplication::translate("MainWindow", "\345\217\221\351\200\201\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257", nullptr));
         menuTool->setTitle(QApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", nullptr));

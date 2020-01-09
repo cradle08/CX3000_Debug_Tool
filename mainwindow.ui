@@ -575,7 +575,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>自定义消息</string>
+     <string>自定义消息(HEX)</string>
     </property>
     <widget class="QPushButton" name="pBtn_selfDefineMsg">
      <property name="geometry">
