@@ -13,6 +13,7 @@
 #include <QNetworkDatagram>
 #include <QTextCodec>
 #include <QVariant>
+#include <QIcon>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("CX-Debug-Tools");
+    //this->setWindowIcon(QIcon(...));
 
     // init localip combobox
     QList<QHostAddress> addrList;
@@ -54,10 +56,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pBtn_UDPClose->setEnabled(false);
     //Config Init
     Config_Init();
-    // led combobox
+    // led combobix
     LED_Combobox_Init();
-
-
 }
 
 
@@ -67,6 +67,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete socketUdp;
     delete label_barStatus;
+    delete configIni;
 }
 
 void MainWindow::Config_Init()
@@ -78,7 +79,11 @@ void MainWindow::Config_Init()
     configIni = new QSettings(tr("%1/config.ini").arg(strProjectPath), QSettings::IniFormat);
     //configIni.setIniCodec(QTextCodec::codecForName("UTF-8"));
     configIni->setIniCodec("UTF-8");
+
+    QString str = configIni->value("/Protocol/Test").toString();
+    qDebug() <<"Test:" << str;
 }
+
 
 void MainWindow::LED_Combobox_Init()
 {
@@ -88,8 +93,8 @@ void MainWindow::LED_Combobox_Init()
         QString str = configIni->value(tr("LED%1").arg(i)).toString();
         ui->comboBox_ledNum->addItem(str);
    }
+   configIni->endGroup();
 }
-
 //
 void MainWindow::Send_TestCmd()
 {
@@ -139,15 +144,10 @@ void MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn)
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
 
-void MainWindow::QString_Send_Msg_Handler(QString &str)
-{
-    QByteArray data = QByteArray::fromHex(str.toUtf8());
-    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
-}
-
 
 void MainWindow::on_comboBox_localIP_currentIndexChanged(const QString &arg1)
 {
+
     stLocalIP = QHostAddress(arg1);
     if(stLocalIP.isNull())
     {
@@ -174,6 +174,7 @@ void MainWindow::on_lineEdit_localPort_editingFinished()
         qDebug() << "localPort input error" << endl;
         QMessageBox::warning(this, "Waring", "localPort Input Error");
     }
+
 }
 
 void MainWindow::on_lineEdit_remoteIP_editingFinished()
@@ -271,7 +272,9 @@ void MainWindow::on_pBtn_ledOpen_clicked()
     int index =  ui->comboBox_ledNum->currentIndex();
     qDebug()<<str <<"=" << msg << " index:"<<index;
 
-    msg.replace(16, 2,tr("%02d").arg(index));
+    QString strTemp = QString::number(index);
+    strTemp.insert(0, '0');
+    msg.replace(16, 2, strTemp);
     qDebug() <<"msg="<<msg;
     QByteArray data = QByteArray::fromHex(msg.toUtf8());
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
@@ -280,7 +283,22 @@ void MainWindow::on_pBtn_ledOpen_clicked()
 void MainWindow::on_pBtn_ledClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->objectName();
+    str = str.mid(str.indexOf("_") + 1);
+    qDebug() << str;
+    configIni->beginGroup("Protocol");
+    QString msg = configIni->value(str).toString();
+    configIni->endGroup();
+
+    int index =  ui->comboBox_ledNum->currentIndex();
+    qDebug()<<str <<"=" << msg << " index:"<<index;
+
+    QString strTemp = QString::number(index);
+    strTemp.insert(0, '0');
+    msg.replace(16, 2, strTemp);
+    qDebug() <<"msg="<<msg;
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
+    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
 
 void MainWindow::on_pBtn_mainMotorIn_clicked()
@@ -322,7 +340,24 @@ void MainWindow::on_pBtn_pumpClose_clicked()
 void MainWindow::on_pBtn_pumpSpeedSet_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->objectName();
+    str = str.mid(str.indexOf("_") + 1);
+    configIni->beginGroup("Protocol");
+    QString msg = configIni->value(str).toString();
+    configIni->endGroup();
+    qDebug()<<str <<"=" << msg;
+
+    unsigned int val =  ui->lineEdit_pumpSpeed->text().toUInt();
+    qDebug() << val;
+
+    QString strstr;
+    strstr.sprintf("%08X", val);
+    qDebug() << "val:" << strstr;
+
+    msg.replace(16, 8, strstr);
+    qDebug() <<"msg="<<msg;
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
+    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
 
 void MainWindow::on_pBtn_WBCTest_clicked()
@@ -428,4 +463,3 @@ void MainWindow::on_pBtn_selfDefineMsg_clicked()
     QByteArray data = QByteArray::fromHex(msg.toUtf8());
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
-

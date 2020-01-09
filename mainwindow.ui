@@ -142,7 +142,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="widget">
      <attribute name="title">
@@ -229,9 +229,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>20</y>
+         <y>22</y>
          <width>54</width>
-         <height>21</height>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -241,9 +241,9 @@
       <widget class="QComboBox" name="comboBox_ledNum">
        <property name="geometry">
         <rect>
-         <x>60</x>
+         <x>70</x>
          <y>23</y>
-         <width>101</width>
+         <width>81</width>
          <height>20</height>
         </rect>
        </property>
@@ -251,7 +251,7 @@
       <widget class="QPushButton" name="pBtn_ledOpen">
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>165</x>
          <y>22</y>
          <width>75</width>
          <height>23</height>
@@ -346,7 +346,7 @@
         <x>10</x>
         <y>190</y>
         <width>121</width>
-        <height>171</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="title">
@@ -375,7 +375,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="lineEdit_pumpSpeed">
          <property name="text">
           <string>1500</string>
          </property>
@@ -396,7 +396,7 @@
         <x>140</x>
         <y>190</y>
         <width>211</width>
-        <height>171</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="title">
@@ -532,11 +532,179 @@
        </item>
       </layout>
      </widget>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>180</y>
+        <width>231</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>返回消息</string>
+      </property>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>211</width>
+         <height>161</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_2">
      <attribute name="title">
       <string>状态及参数界面</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>压力补偿值：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>获取压力补偿值</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>设置压力补偿值</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_10">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>121</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="lineEdit_3"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>进出仓补偿值：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>进出仓补偿值</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>设置进出仓补偿值</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>198</width>
+        <height>113</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="text">
+          <string>获取温度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QPushButton" name="pushButton_12">
+         <property name="text">
+          <string>获取恒流源电压</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>获取小孔电压</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QPushButton" name="pushButton_13">
+         <property name="text">
+          <string>获取气压值</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pushButton_20">
+         <property name="text">
+          <string>获取软件版本</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <widget class="QPushButton" name="pushButton_14">
+         <property name="text">
+          <string>获取光耦状态</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>0</y>
+        <width>231</width>
+        <height>371</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="pBtn_UDPOpen">

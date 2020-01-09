@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[48];
-    char stringdata0[1236];
+    QByteArrayData data[46];
+    char stringdata0[1210];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,53 +38,50 @@ QT_MOC_LITERAL(3, 29, 12), // "Send_TestCmd"
 QT_MOC_LITERAL(4, 42, 23), // "Button_Send_Msg_Handler"
 QT_MOC_LITERAL(5, 66, 12), // "QPushButton*"
 QT_MOC_LITERAL(6, 79, 4), // "pBtn"
-QT_MOC_LITERAL(7, 84, 24), // "QString_Send_Msg_Handler"
-QT_MOC_LITERAL(8, 109, 8), // "QString&"
-QT_MOC_LITERAL(9, 118, 3), // "str"
-QT_MOC_LITERAL(10, 122, 33), // "on_lineEdit_localPort_textCha..."
-QT_MOC_LITERAL(11, 156, 4), // "arg1"
-QT_MOC_LITERAL(12, 161, 39), // "on_comboBox_localIP_currentIn..."
-QT_MOC_LITERAL(13, 201, 37), // "on_lineEdit_localPort_editing..."
-QT_MOC_LITERAL(14, 239, 36), // "on_lineEdit_remoteIP_editingF..."
-QT_MOC_LITERAL(15, 276, 38), // "on_lineEdit_remotePort_editin..."
-QT_MOC_LITERAL(16, 315, 23), // "on_pBtn_UDPOpen_clicked"
-QT_MOC_LITERAL(17, 339, 24), // "on_pBtn_UDPClose_clicked"
-QT_MOC_LITERAL(18, 364, 32), // "on_pBtn_liquidValveClose_clicked"
-QT_MOC_LITERAL(19, 397, 31), // "on_pBtn_liquidValveOpen_clicked"
-QT_MOC_LITERAL(20, 429, 28), // "on_pBtn_airValveOpen_clicked"
-QT_MOC_LITERAL(21, 458, 29), // "on_pBtn_airValveClose_clicked"
-QT_MOC_LITERAL(22, 488, 23), // "on_pBtn_ledOpen_clicked"
-QT_MOC_LITERAL(23, 512, 24), // "on_pBtn_ledClose_clicked"
-QT_MOC_LITERAL(24, 537, 27), // "on_pBtn_mainMotorIn_clicked"
-QT_MOC_LITERAL(25, 565, 28), // "on_pBtn_mainMotorOut_clicked"
-QT_MOC_LITERAL(26, 594, 22), // "on_pBtn_cangIn_clicked"
-QT_MOC_LITERAL(27, 617, 23), // "on_pBtn_cangOut_clicked"
-QT_MOC_LITERAL(28, 641, 24), // "on_pBtn_pumpOpen_clicked"
-QT_MOC_LITERAL(29, 666, 25), // "on_pBtn_pumpClose_clicked"
-QT_MOC_LITERAL(30, 692, 28), // "on_pBtn_pumpSpeedSet_clicked"
-QT_MOC_LITERAL(31, 721, 23), // "on_pBtn_WBCTest_clicked"
-QT_MOC_LITERAL(32, 745, 27), // "on_pBtn_RBCPLT_Test_clicked"
-QT_MOC_LITERAL(33, 773, 26), // "on_pBtn_setHGBMode_clicked"
-QT_MOC_LITERAL(34, 800, 26), // "on_pBtn_setCRPMode_clicked"
-QT_MOC_LITERAL(35, 827, 29), // "on_pBtn_backGroundCRP_clicked"
-QT_MOC_LITERAL(36, 857, 23), // "on_pBtn_CRPTest_clicked"
-QT_MOC_LITERAL(37, 881, 29), // "on_pBtn_backGroundHGB_clicked"
-QT_MOC_LITERAL(38, 911, 23), // "on_pBtn_HGBTest_clicked"
-QT_MOC_LITERAL(39, 935, 33), // "on_pBtn_airValveSelfCheck_cli..."
-QT_MOC_LITERAL(40, 969, 36), // "on_pBtn_liquidValveSelfCheck_..."
-QT_MOC_LITERAL(41, 1006, 33), // "on_pBtn_motorOutSelfCheck_cli..."
-QT_MOC_LITERAL(42, 1040, 32), // "on_pBtn_motorInSelfCheck_clicked"
-QT_MOC_LITERAL(43, 1073, 35), // "on_pBtn_buildPressSelfCheck_c..."
-QT_MOC_LITERAL(44, 1109, 33), // "on_pBtn_airLightSelfCheck_cli..."
-QT_MOC_LITERAL(45, 1143, 29), // "on_pBtn_pumpSelfCheck_clicked"
-QT_MOC_LITERAL(46, 1173, 32), // "on_pBtn_currentSelfCheck_clicked"
-QT_MOC_LITERAL(47, 1206, 29) // "on_pBtn_selfDefineMsg_clicked"
+QT_MOC_LITERAL(7, 84, 11), // "Config_Init"
+QT_MOC_LITERAL(8, 96, 33), // "on_lineEdit_localPort_textCha..."
+QT_MOC_LITERAL(9, 130, 4), // "arg1"
+QT_MOC_LITERAL(10, 135, 39), // "on_comboBox_localIP_currentIn..."
+QT_MOC_LITERAL(11, 175, 37), // "on_lineEdit_localPort_editing..."
+QT_MOC_LITERAL(12, 213, 36), // "on_lineEdit_remoteIP_editingF..."
+QT_MOC_LITERAL(13, 250, 38), // "on_lineEdit_remotePort_editin..."
+QT_MOC_LITERAL(14, 289, 23), // "on_pBtn_UDPOpen_clicked"
+QT_MOC_LITERAL(15, 313, 24), // "on_pBtn_UDPClose_clicked"
+QT_MOC_LITERAL(16, 338, 32), // "on_pBtn_liquidValveClose_clicked"
+QT_MOC_LITERAL(17, 371, 31), // "on_pBtn_liquidValveOpen_clicked"
+QT_MOC_LITERAL(18, 403, 28), // "on_pBtn_airValveOpen_clicked"
+QT_MOC_LITERAL(19, 432, 29), // "on_pBtn_airValveClose_clicked"
+QT_MOC_LITERAL(20, 462, 23), // "on_pBtn_ledOpen_clicked"
+QT_MOC_LITERAL(21, 486, 24), // "on_pBtn_ledClose_clicked"
+QT_MOC_LITERAL(22, 511, 27), // "on_pBtn_mainMotorIn_clicked"
+QT_MOC_LITERAL(23, 539, 28), // "on_pBtn_mainMotorOut_clicked"
+QT_MOC_LITERAL(24, 568, 22), // "on_pBtn_cangIn_clicked"
+QT_MOC_LITERAL(25, 591, 23), // "on_pBtn_cangOut_clicked"
+QT_MOC_LITERAL(26, 615, 24), // "on_pBtn_pumpOpen_clicked"
+QT_MOC_LITERAL(27, 640, 25), // "on_pBtn_pumpClose_clicked"
+QT_MOC_LITERAL(28, 666, 28), // "on_pBtn_pumpSpeedSet_clicked"
+QT_MOC_LITERAL(29, 695, 23), // "on_pBtn_WBCTest_clicked"
+QT_MOC_LITERAL(30, 719, 27), // "on_pBtn_RBCPLT_Test_clicked"
+QT_MOC_LITERAL(31, 747, 26), // "on_pBtn_setHGBMode_clicked"
+QT_MOC_LITERAL(32, 774, 26), // "on_pBtn_setCRPMode_clicked"
+QT_MOC_LITERAL(33, 801, 29), // "on_pBtn_backGroundCRP_clicked"
+QT_MOC_LITERAL(34, 831, 23), // "on_pBtn_CRPTest_clicked"
+QT_MOC_LITERAL(35, 855, 29), // "on_pBtn_backGroundHGB_clicked"
+QT_MOC_LITERAL(36, 885, 23), // "on_pBtn_HGBTest_clicked"
+QT_MOC_LITERAL(37, 909, 33), // "on_pBtn_airValveSelfCheck_cli..."
+QT_MOC_LITERAL(38, 943, 36), // "on_pBtn_liquidValveSelfCheck_..."
+QT_MOC_LITERAL(39, 980, 33), // "on_pBtn_motorOutSelfCheck_cli..."
+QT_MOC_LITERAL(40, 1014, 32), // "on_pBtn_motorInSelfCheck_clicked"
+QT_MOC_LITERAL(41, 1047, 35), // "on_pBtn_buildPressSelfCheck_c..."
+QT_MOC_LITERAL(42, 1083, 33), // "on_pBtn_airLightSelfCheck_cli..."
+QT_MOC_LITERAL(43, 1117, 29), // "on_pBtn_pumpSelfCheck_clicked"
+QT_MOC_LITERAL(44, 1147, 32), // "on_pBtn_currentSelfCheck_clicked"
+QT_MOC_LITERAL(45, 1180, 29) // "on_pBtn_selfDefineMsg_clicked"
 
     },
     "MainWindow\0Recv_Msg_Handler\0\0Send_TestCmd\0"
     "Button_Send_Msg_Handler\0QPushButton*\0"
-    "pBtn\0QString_Send_Msg_Handler\0QString&\0"
-    "str\0on_lineEdit_localPort_textChanged\0"
+    "pBtn\0Config_Init\0on_lineEdit_localPort_textChanged\0"
     "arg1\0on_comboBox_localIP_currentIndexChanged\0"
     "on_lineEdit_localPort_editingFinished\0"
     "on_lineEdit_remoteIP_editingFinished\0"
@@ -140,9 +137,11 @@ static const uint qt_meta_data_MainWindow[] = {
        1,    0,  219,    2, 0x0a /* Public */,
        3,    0,  220,    2, 0x0a /* Public */,
        4,    1,  221,    2, 0x0a /* Public */,
-       7,    1,  224,    2, 0x0a /* Public */,
-      10,    1,  227,    2, 0x08 /* Private */,
-      12,    1,  230,    2, 0x08 /* Private */,
+       7,    0,  224,    2, 0x0a /* Public */,
+       8,    1,  225,    2, 0x08 /* Private */,
+      10,    1,  228,    2, 0x08 /* Private */,
+      11,    0,  231,    2, 0x08 /* Private */,
+      12,    0,  232,    2, 0x08 /* Private */,
       13,    0,  233,    2, 0x08 /* Private */,
       14,    0,  234,    2, 0x08 /* Private */,
       15,    0,  235,    2, 0x08 /* Private */,
@@ -176,16 +175,14 @@ static const uint qt_meta_data_MainWindow[] = {
       43,    0,  263,    2, 0x08 /* Private */,
       44,    0,  264,    2, 0x08 /* Private */,
       45,    0,  265,    2, 0x08 /* Private */,
-      46,    0,  266,    2, 0x08 /* Private */,
-      47,    0,  267,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 5,    6,
-    QMetaType::Void, 0x80000000 | 8,    9,
-    QMetaType::Void, QMetaType::QString,   11,
-    QMetaType::Void, QMetaType::QString,   11,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, QMetaType::QString,    9,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -234,7 +231,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->Recv_Msg_Handler(); break;
         case 1: _t->Send_TestCmd(); break;
         case 2: _t->Button_Send_Msg_Handler((*reinterpret_cast< QPushButton*(*)>(_a[1]))); break;
-        case 3: _t->QString_Send_Msg_Handler((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->Config_Init(); break;
         case 4: _t->on_lineEdit_localPort_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 5: _t->on_comboBox_localIP_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 6: _t->on_lineEdit_localPort_editingFinished(); break;

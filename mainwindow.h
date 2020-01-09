@@ -24,10 +24,9 @@ public slots:
     void Recv_Msg_Handler();
     void Send_TestCmd();
     void Button_Send_Msg_Handler(QPushButton *pBtn);
-    void QString_Send_Msg_Handler(QString &str);
+    void Config_Init();
 
 public:
-    void Config_Init();
     void LED_Combobox_Init();
 
 private slots:
@@ -104,7 +103,6 @@ private slots:
     void on_pBtn_currentSelfCheck_clicked();
 
     void on_pBtn_selfDefineMsg_clicked();
-
 
 private:
     Ui::MainWindow *ui;
