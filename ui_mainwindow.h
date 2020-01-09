@@ -163,13 +163,13 @@ public:
         groupBox_4->setGeometry(QRect(10, 69, 341, 55));
         label_6 = new QLabel(groupBox_4);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(10, 22, 54, 16));
+        label_6->setGeometry(QRect(10, 20, 54, 21));
         comboBox_ledNum = new QComboBox(groupBox_4);
         comboBox_ledNum->setObjectName(QString::fromUtf8("comboBox_ledNum"));
-        comboBox_ledNum->setGeometry(QRect(70, 23, 81, 20));
+        comboBox_ledNum->setGeometry(QRect(60, 23, 101, 20));
         pBtn_ledOpen = new QPushButton(groupBox_4);
         pBtn_ledOpen->setObjectName(QString::fromUtf8("pBtn_ledOpen"));
-        pBtn_ledOpen->setGeometry(QRect(165, 22, 75, 23));
+        pBtn_ledOpen->setGeometry(QRect(170, 22, 75, 23));
         pBtn_ledClose = new QPushButton(groupBox_4);
         pBtn_ledClose->setObjectName(QString::fromUtf8("pBtn_ledClose"));
         pBtn_ledClose->setGeometry(QRect(250, 22, 75, 23));
@@ -269,7 +269,7 @@ public:
 
         groupBox_3 = new QGroupBox(widget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(370, 10, 231, 181));
+        groupBox_3->setGeometry(QRect(370, 10, 231, 171));
         gridLayout_2 = new QGridLayout(groupBox_3);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);

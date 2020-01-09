@@ -229,9 +229,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>22</y>
+         <y>20</y>
          <width>54</width>
-         <height>16</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
@@ -241,9 +241,9 @@
       <widget class="QComboBox" name="comboBox_ledNum">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>60</x>
          <y>23</y>
-         <width>81</width>
+         <width>101</width>
          <height>20</height>
         </rect>
        </property>
@@ -251,7 +251,7 @@
       <widget class="QPushButton" name="pBtn_ledOpen">
        <property name="geometry">
         <rect>
-         <x>165</x>
+         <x>170</x>
          <y>22</y>
          <width>75</width>
          <height>23</height>
@@ -467,7 +467,7 @@
         <x>370</x>
         <y>10</y>
         <width>231</width>
-        <height>181</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
