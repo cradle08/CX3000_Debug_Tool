@@ -21,11 +21,11 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -45,29 +45,28 @@ public:
     QLineEdit *lineEdit_remotePort;
     QLineEdit *lineEdit_remoteIP;
     QTabWidget *tabWidget;
-    QWidget *widget;
-    QGroupBox *groupBox_5;
-    QPushButton *pBtn_mainMotorIn;
-    QPushButton *pBtn_mainMotorOut;
-    QPushButton *pBtn_cangIn;
-    QPushButton *pBtn_cangOut;
+    QWidget *widget_Ctrol;
     QGroupBox *groupBox_4;
+    QGridLayout *gridLayout_11;
     QLabel *label_6;
     QComboBox *comboBox_ledNum;
     QPushButton *pBtn_ledOpen;
     QPushButton *pBtn_ledClose;
+    QPushButton *pBtn_ledMotorSelect;
     QGroupBox *groupBox_6;
+    QGridLayout *gridLayout_10;
     QPushButton *pBtn_liquidValveOpen;
-    QPushButton *pBtn_airValveOpen;
     QPushButton *pBtn_liquidValveClose;
+    QPushButton *pBtn_airValveOpen;
     QPushButton *pBtn_airValveClose;
-    QGroupBox *groupBox;
-    QVBoxLayout *verticalLayout;
+    QPushButton *pBtn_mainMotorIn;
+    QPushButton *pBtn_mainMotorOut;
+    QPushButton *pBtn_cangIn;
+    QPushButton *pBtn_cangOut;
+    QPushButton *pBtn_fixMotorClose;
+    QPushButton *pBtn_fixMotorOpen;
     QPushButton *pBtn_pumpOpen;
     QPushButton *pBtn_pumpClose;
-    QLabel *label_7;
-    QLineEdit *lineEdit_pumpSpeed;
-    QPushButton *pBtn_pumpSpeedSet;
     QGroupBox *groupBox_7;
     QGridLayout *gridLayout;
     QPushButton *pBtn_WBCTest;
@@ -80,38 +79,65 @@ public:
     QPushButton *pBtn_HGBTest;
     QGroupBox *groupBox_3;
     QGridLayout *gridLayout_2;
-    QPushButton *pBtn_airLightSelfCheck;
-    QPushButton *pBtn_currentSelfCheck;
     QPushButton *pBtn_airValveSelfCheck;
-    QPushButton *pBtn_motorInSelfCheck;
     QPushButton *pBtn_liquidValveSelfCheck;
-    QPushButton *pBtn_pumpSelfCheck;
     QPushButton *pBtn_motorOutSelfCheck;
+    QPushButton *pBtn_motorInSelfCheck;
     QPushButton *pBtn_buildPressSelfCheck;
+    QPushButton *pBtn_airLightSelfCheck;
+    QPushButton *pBtn_pumpSelfCheck;
+    QPushButton *pBtn_currentSelfCheck;
+    QPushButton *pBtn_mixingMotorSelfCheck;
+    QPushButton *pBtn_turnMotorSelfCheck;
     QGroupBox *groupBox_8;
-    QTextEdit *textEdit;
-    QWidget *widget_2;
+    QGridLayout *gridLayout_6;
+    QTextEdit *textEdit_backMsgCtrolMenu;
+    QTextEdit *textEdit_3;
+    QWidget *widget_Status;
     QGroupBox *groupBox_9;
     QGridLayout *gridLayout_3;
-    QLineEdit *lineEdit;
     QLabel *label_5;
-    QPushButton *pushButton;
-    QPushButton *pushButton_3;
+    QPushButton *pBtn_getPressAddValue;
+    QPushButton *pBtn_setPressAddValue;
+    QSpinBox *spinBox_pressAddValue;
     QGroupBox *groupBox_10;
     QGridLayout *gridLayout_4;
-    QLineEdit *lineEdit_3;
     QLabel *label_9;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
+    QPushButton *pBtn_getOutInStepAddValue;
+    QPushButton *pBtn_setOutInStepAddValue;
+    QSpinBox *spinBox_outinStepAddValue;
     QGroupBox *groupBox_11;
     QGridLayout *gridLayout_5;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_12;
-    QPushButton *pushButton_7;
-    QPushButton *pushButton_13;
-    QPushButton *pushButton_20;
-    QPushButton *pushButton_14;
-    QTextEdit *textEdit_2;
+    QPushButton *pBtn_getXKVoltage;
+    QPushButton *pBtn_getOC;
+    QPushButton *pBtn_getPressValue;
+    QPushButton *pBtn_getSanSheVoltage;
+    QPushButton *pBt_getTemp;
+    QPushButton *pBtn_getCurrentVoltage;
+    QPushButton *pBtn_getMicroSwitch;
+    QPushButton *pBtn_getVersion;
+    QPushButton *pBtn_getTouSheVoltage;
+    QPushButton *pBtn_getBioTestMode;
+    QPushButton *pBtn_getElectrol;
+    QGroupBox *groupBox_13;
+    QGridLayout *gridLayout_7;
+    QPushButton *pBtn_setPumpSpeed;
+    QPushButton *pBtn_getPumpSpeed;
+    QLabel *label_8;
+    QSpinBox *spinBox_pumpSpeed;
+    QTextEdit *textEdit_backMsgStatusMenu;
+    QGroupBox *groupBox_14;
+    QGridLayout *gridLayout_9;
+    QLabel *label_10;
+    QPushButton *pBtn_setDRegister;
+    QComboBox *comboBox_DRegister;
+    QPushButton *pBtn_getDRegister;
+    QLabel *label_7;
+    QSpinBox *spinBox_DRegister;
+    QWidget *tab_WBC;
+    QWidget *tab_RBCPLT;
+    QWidget *tab_bioTest;
+    QWidget *tab_mcuUpdate;
     QPushButton *pBtn_UDPOpen;
     QPushButton *pBtn_UDPClose;
     QGroupBox *groupBox_selfMsg;
@@ -128,7 +154,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(816, 460);
+        MainWindow->resize(809, 451);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gBx_Control = new QGroupBox(centralWidget);
@@ -163,89 +189,111 @@ public:
         lineEdit_remoteIP->setGeometry(QRect(70, 30, 101, 20));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(200, 0, 611, 401));
-        widget = new QWidget();
-        widget->setObjectName(QString::fromUtf8("widget"));
-        groupBox_5 = new QGroupBox(widget);
-        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
-        groupBox_5->setGeometry(QRect(10, 130, 338, 55));
-        pBtn_mainMotorIn = new QPushButton(groupBox_5);
-        pBtn_mainMotorIn->setObjectName(QString::fromUtf8("pBtn_mainMotorIn"));
-        pBtn_mainMotorIn->setGeometry(QRect(10, 22, 71, 23));
-        pBtn_mainMotorOut = new QPushButton(groupBox_5);
-        pBtn_mainMotorOut->setObjectName(QString::fromUtf8("pBtn_mainMotorOut"));
-        pBtn_mainMotorOut->setGeometry(QRect(91, 22, 75, 23));
-        pBtn_cangIn = new QPushButton(groupBox_5);
-        pBtn_cangIn->setObjectName(QString::fromUtf8("pBtn_cangIn"));
-        pBtn_cangIn->setGeometry(QRect(176, 22, 71, 23));
-        pBtn_cangOut = new QPushButton(groupBox_5);
-        pBtn_cangOut->setObjectName(QString::fromUtf8("pBtn_cangOut"));
-        pBtn_cangOut->setGeometry(QRect(257, 22, 71, 23));
-        groupBox_4 = new QGroupBox(widget);
+        tabWidget->setGeometry(QRect(200, 0, 754, 614));
+        widget_Ctrol = new QWidget();
+        widget_Ctrol->setObjectName(QString::fromUtf8("widget_Ctrol"));
+        groupBox_4 = new QGroupBox(widget_Ctrol);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(10, 69, 341, 55));
+        groupBox_4->setGeometry(QRect(10, 120, 121, 171));
+        gridLayout_11 = new QGridLayout(groupBox_4);
+        gridLayout_11->setSpacing(6);
+        gridLayout_11->setContentsMargins(11, 11, 11, 11);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
         label_6 = new QLabel(groupBox_4);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(10, 22, 54, 16));
+
+        gridLayout_11->addWidget(label_6, 0, 0, 1, 1);
+
         comboBox_ledNum = new QComboBox(groupBox_4);
         comboBox_ledNum->setObjectName(QString::fromUtf8("comboBox_ledNum"));
-        comboBox_ledNum->setGeometry(QRect(70, 23, 81, 20));
+
+        gridLayout_11->addWidget(comboBox_ledNum, 1, 0, 1, 1);
+
         pBtn_ledOpen = new QPushButton(groupBox_4);
         pBtn_ledOpen->setObjectName(QString::fromUtf8("pBtn_ledOpen"));
-        pBtn_ledOpen->setGeometry(QRect(165, 22, 75, 23));
+
+        gridLayout_11->addWidget(pBtn_ledOpen, 2, 0, 1, 1);
+
         pBtn_ledClose = new QPushButton(groupBox_4);
         pBtn_ledClose->setObjectName(QString::fromUtf8("pBtn_ledClose"));
-        pBtn_ledClose->setGeometry(QRect(250, 22, 75, 23));
-        groupBox_6 = new QGroupBox(widget);
+
+        gridLayout_11->addWidget(pBtn_ledClose, 3, 0, 1, 1);
+
+        pBtn_ledMotorSelect = new QPushButton(groupBox_4);
+        pBtn_ledMotorSelect->setObjectName(QString::fromUtf8("pBtn_ledMotorSelect"));
+
+        gridLayout_11->addWidget(pBtn_ledMotorSelect, 4, 0, 1, 1);
+
+        groupBox_6 = new QGroupBox(widget_Ctrol);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
-        groupBox_6->setGeometry(QRect(10, 8, 338, 55));
+        groupBox_6->setGeometry(QRect(10, 8, 331, 111));
+        gridLayout_10 = new QGridLayout(groupBox_6);
+        gridLayout_10->setSpacing(6);
+        gridLayout_10->setContentsMargins(11, 11, 11, 11);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
         pBtn_liquidValveOpen = new QPushButton(groupBox_6);
         pBtn_liquidValveOpen->setObjectName(QString::fromUtf8("pBtn_liquidValveOpen"));
-        pBtn_liquidValveOpen->setGeometry(QRect(10, 22, 75, 23));
-        pBtn_airValveOpen = new QPushButton(groupBox_6);
-        pBtn_airValveOpen->setObjectName(QString::fromUtf8("pBtn_airValveOpen"));
-        pBtn_airValveOpen->setGeometry(QRect(172, 22, 75, 23));
+
+        gridLayout_10->addWidget(pBtn_liquidValveOpen, 0, 0, 1, 1);
+
         pBtn_liquidValveClose = new QPushButton(groupBox_6);
         pBtn_liquidValveClose->setObjectName(QString::fromUtf8("pBtn_liquidValveClose"));
-        pBtn_liquidValveClose->setGeometry(QRect(91, 22, 75, 23));
+
+        gridLayout_10->addWidget(pBtn_liquidValveClose, 0, 1, 1, 1);
+
+        pBtn_airValveOpen = new QPushButton(groupBox_6);
+        pBtn_airValveOpen->setObjectName(QString::fromUtf8("pBtn_airValveOpen"));
+
+        gridLayout_10->addWidget(pBtn_airValveOpen, 0, 2, 1, 1);
+
         pBtn_airValveClose = new QPushButton(groupBox_6);
         pBtn_airValveClose->setObjectName(QString::fromUtf8("pBtn_airValveClose"));
-        pBtn_airValveClose->setGeometry(QRect(253, 22, 75, 23));
-        groupBox = new QGroupBox(widget);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 190, 121, 181));
-        verticalLayout = new QVBoxLayout(groupBox);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        pBtn_pumpOpen = new QPushButton(groupBox);
+
+        gridLayout_10->addWidget(pBtn_airValveClose, 0, 3, 1, 1);
+
+        pBtn_mainMotorIn = new QPushButton(groupBox_6);
+        pBtn_mainMotorIn->setObjectName(QString::fromUtf8("pBtn_mainMotorIn"));
+
+        gridLayout_10->addWidget(pBtn_mainMotorIn, 1, 0, 1, 1);
+
+        pBtn_mainMotorOut = new QPushButton(groupBox_6);
+        pBtn_mainMotorOut->setObjectName(QString::fromUtf8("pBtn_mainMotorOut"));
+
+        gridLayout_10->addWidget(pBtn_mainMotorOut, 1, 1, 1, 1);
+
+        pBtn_cangIn = new QPushButton(groupBox_6);
+        pBtn_cangIn->setObjectName(QString::fromUtf8("pBtn_cangIn"));
+
+        gridLayout_10->addWidget(pBtn_cangIn, 1, 2, 1, 1);
+
+        pBtn_cangOut = new QPushButton(groupBox_6);
+        pBtn_cangOut->setObjectName(QString::fromUtf8("pBtn_cangOut"));
+
+        gridLayout_10->addWidget(pBtn_cangOut, 1, 3, 1, 1);
+
+        pBtn_fixMotorClose = new QPushButton(groupBox_6);
+        pBtn_fixMotorClose->setObjectName(QString::fromUtf8("pBtn_fixMotorClose"));
+
+        gridLayout_10->addWidget(pBtn_fixMotorClose, 2, 0, 1, 1);
+
+        pBtn_fixMotorOpen = new QPushButton(groupBox_6);
+        pBtn_fixMotorOpen->setObjectName(QString::fromUtf8("pBtn_fixMotorOpen"));
+
+        gridLayout_10->addWidget(pBtn_fixMotorOpen, 2, 1, 1, 1);
+
+        pBtn_pumpOpen = new QPushButton(groupBox_6);
         pBtn_pumpOpen->setObjectName(QString::fromUtf8("pBtn_pumpOpen"));
 
-        verticalLayout->addWidget(pBtn_pumpOpen);
+        gridLayout_10->addWidget(pBtn_pumpOpen, 2, 2, 1, 1);
 
-        pBtn_pumpClose = new QPushButton(groupBox);
+        pBtn_pumpClose = new QPushButton(groupBox_6);
         pBtn_pumpClose->setObjectName(QString::fromUtf8("pBtn_pumpClose"));
 
-        verticalLayout->addWidget(pBtn_pumpClose);
+        gridLayout_10->addWidget(pBtn_pumpClose, 2, 3, 1, 1);
 
-        label_7 = new QLabel(groupBox);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        verticalLayout->addWidget(label_7);
-
-        lineEdit_pumpSpeed = new QLineEdit(groupBox);
-        lineEdit_pumpSpeed->setObjectName(QString::fromUtf8("lineEdit_pumpSpeed"));
-
-        verticalLayout->addWidget(lineEdit_pumpSpeed);
-
-        pBtn_pumpSpeedSet = new QPushButton(groupBox);
-        pBtn_pumpSpeedSet->setObjectName(QString::fromUtf8("pBtn_pumpSpeedSet"));
-
-        verticalLayout->addWidget(pBtn_pumpSpeedSet);
-
-        groupBox_7 = new QGroupBox(widget);
+        groupBox_7 = new QGroupBox(widget_Ctrol);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
-        groupBox_7->setGeometry(QRect(140, 190, 211, 181));
+        groupBox_7->setGeometry(QRect(350, 10, 241, 131));
         gridLayout = new QGridLayout(groupBox_7);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -290,157 +338,277 @@ public:
 
         gridLayout->addWidget(pBtn_HGBTest, 3, 1, 1, 1);
 
-        groupBox_3 = new QGroupBox(widget);
+        groupBox_3 = new QGroupBox(widget_Ctrol);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(370, 10, 231, 171));
+        groupBox_3->setGeometry(QRect(140, 120, 201, 171));
         gridLayout_2 = new QGridLayout(groupBox_3);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        pBtn_airLightSelfCheck = new QPushButton(groupBox_3);
-        pBtn_airLightSelfCheck->setObjectName(QString::fromUtf8("pBtn_airLightSelfCheck"));
-
-        gridLayout_2->addWidget(pBtn_airLightSelfCheck, 2, 1, 1, 1);
-
-        pBtn_currentSelfCheck = new QPushButton(groupBox_3);
-        pBtn_currentSelfCheck->setObjectName(QString::fromUtf8("pBtn_currentSelfCheck"));
-
-        gridLayout_2->addWidget(pBtn_currentSelfCheck, 3, 1, 1, 1);
-
         pBtn_airValveSelfCheck = new QPushButton(groupBox_3);
         pBtn_airValveSelfCheck->setObjectName(QString::fromUtf8("pBtn_airValveSelfCheck"));
 
         gridLayout_2->addWidget(pBtn_airValveSelfCheck, 0, 0, 1, 1);
-
-        pBtn_motorInSelfCheck = new QPushButton(groupBox_3);
-        pBtn_motorInSelfCheck->setObjectName(QString::fromUtf8("pBtn_motorInSelfCheck"));
-
-        gridLayout_2->addWidget(pBtn_motorInSelfCheck, 1, 1, 1, 1);
 
         pBtn_liquidValveSelfCheck = new QPushButton(groupBox_3);
         pBtn_liquidValveSelfCheck->setObjectName(QString::fromUtf8("pBtn_liquidValveSelfCheck"));
 
         gridLayout_2->addWidget(pBtn_liquidValveSelfCheck, 0, 1, 1, 1);
 
-        pBtn_pumpSelfCheck = new QPushButton(groupBox_3);
-        pBtn_pumpSelfCheck->setObjectName(QString::fromUtf8("pBtn_pumpSelfCheck"));
-
-        gridLayout_2->addWidget(pBtn_pumpSelfCheck, 3, 0, 1, 1);
-
         pBtn_motorOutSelfCheck = new QPushButton(groupBox_3);
         pBtn_motorOutSelfCheck->setObjectName(QString::fromUtf8("pBtn_motorOutSelfCheck"));
 
         gridLayout_2->addWidget(pBtn_motorOutSelfCheck, 1, 0, 1, 1);
+
+        pBtn_motorInSelfCheck = new QPushButton(groupBox_3);
+        pBtn_motorInSelfCheck->setObjectName(QString::fromUtf8("pBtn_motorInSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_motorInSelfCheck, 1, 1, 1, 1);
 
         pBtn_buildPressSelfCheck = new QPushButton(groupBox_3);
         pBtn_buildPressSelfCheck->setObjectName(QString::fromUtf8("pBtn_buildPressSelfCheck"));
 
         gridLayout_2->addWidget(pBtn_buildPressSelfCheck, 2, 0, 1, 1);
 
-        groupBox_8 = new QGroupBox(widget);
+        pBtn_airLightSelfCheck = new QPushButton(groupBox_3);
+        pBtn_airLightSelfCheck->setObjectName(QString::fromUtf8("pBtn_airLightSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_airLightSelfCheck, 2, 1, 1, 1);
+
+        pBtn_pumpSelfCheck = new QPushButton(groupBox_3);
+        pBtn_pumpSelfCheck->setObjectName(QString::fromUtf8("pBtn_pumpSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_pumpSelfCheck, 3, 0, 1, 1);
+
+        pBtn_currentSelfCheck = new QPushButton(groupBox_3);
+        pBtn_currentSelfCheck->setObjectName(QString::fromUtf8("pBtn_currentSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_currentSelfCheck, 3, 1, 1, 1);
+
+        pBtn_mixingMotorSelfCheck = new QPushButton(groupBox_3);
+        pBtn_mixingMotorSelfCheck->setObjectName(QString::fromUtf8("pBtn_mixingMotorSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_mixingMotorSelfCheck, 4, 0, 1, 1);
+
+        pBtn_turnMotorSelfCheck = new QPushButton(groupBox_3);
+        pBtn_turnMotorSelfCheck->setObjectName(QString::fromUtf8("pBtn_turnMotorSelfCheck"));
+
+        gridLayout_2->addWidget(pBtn_turnMotorSelfCheck, 4, 1, 1, 1);
+
+        groupBox_8 = new QGroupBox(widget_Ctrol);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        groupBox_8->setGeometry(QRect(370, 180, 231, 191));
-        textEdit = new QTextEdit(groupBox_8);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(10, 20, 211, 161));
-        tabWidget->addTab(widget, QString());
-        widget_2 = new QWidget();
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        groupBox_9 = new QGroupBox(widget_2);
+        groupBox_8->setGeometry(QRect(350, 150, 241, 221));
+        gridLayout_6 = new QGridLayout(groupBox_8);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        textEdit_backMsgCtrolMenu = new QTextEdit(groupBox_8);
+        textEdit_backMsgCtrolMenu->setObjectName(QString::fromUtf8("textEdit_backMsgCtrolMenu"));
+
+        gridLayout_6->addWidget(textEdit_backMsgCtrolMenu, 0, 0, 1, 1);
+
+        textEdit_3 = new QTextEdit(widget_Ctrol);
+        textEdit_3->setObjectName(QString::fromUtf8("textEdit_3"));
+        textEdit_3->setGeometry(QRect(-230, 452, 311, 29));
+        tabWidget->addTab(widget_Ctrol, QString());
+        widget_Status = new QWidget();
+        widget_Status->setObjectName(QString::fromUtf8("widget_Status"));
+        groupBox_9 = new QGroupBox(widget_Status);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
-        groupBox_9->setGeometry(QRect(10, 10, 121, 131));
+        groupBox_9->setGeometry(QRect(10, 10, 111, 131));
         gridLayout_3 = new QGridLayout(groupBox_9);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        lineEdit = new QLineEdit(groupBox_9);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        gridLayout_3->addWidget(lineEdit, 2, 0, 1, 1);
-
         label_5 = new QLabel(groupBox_9);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
         gridLayout_3->addWidget(label_5, 1, 0, 1, 1);
 
-        pushButton = new QPushButton(groupBox_9);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pBtn_getPressAddValue = new QPushButton(groupBox_9);
+        pBtn_getPressAddValue->setObjectName(QString::fromUtf8("pBtn_getPressAddValue"));
 
-        gridLayout_3->addWidget(pushButton, 0, 0, 1, 1);
+        gridLayout_3->addWidget(pBtn_getPressAddValue, 0, 0, 1, 1);
 
-        pushButton_3 = new QPushButton(groupBox_9);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pBtn_setPressAddValue = new QPushButton(groupBox_9);
+        pBtn_setPressAddValue->setObjectName(QString::fromUtf8("pBtn_setPressAddValue"));
 
-        gridLayout_3->addWidget(pushButton_3, 3, 0, 1, 1);
+        gridLayout_3->addWidget(pBtn_setPressAddValue, 3, 0, 1, 1);
 
-        groupBox_10 = new QGroupBox(widget_2);
+        spinBox_pressAddValue = new QSpinBox(groupBox_9);
+        spinBox_pressAddValue->setObjectName(QString::fromUtf8("spinBox_pressAddValue"));
+
+        gridLayout_3->addWidget(spinBox_pressAddValue, 2, 0, 1, 1);
+
+        groupBox_10 = new QGroupBox(widget_Status);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
-        groupBox_10->setGeometry(QRect(140, 10, 121, 131));
+        groupBox_10->setGeometry(QRect(130, 10, 121, 131));
         gridLayout_4 = new QGridLayout(groupBox_10);
         gridLayout_4->setSpacing(6);
         gridLayout_4->setContentsMargins(11, 11, 11, 11);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        lineEdit_3 = new QLineEdit(groupBox_10);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-
-        gridLayout_4->addWidget(lineEdit_3, 2, 0, 1, 1);
-
         label_9 = new QLabel(groupBox_10);
         label_9->setObjectName(QString::fromUtf8("label_9"));
 
         gridLayout_4->addWidget(label_9, 1, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(groupBox_10);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pBtn_getOutInStepAddValue = new QPushButton(groupBox_10);
+        pBtn_getOutInStepAddValue->setObjectName(QString::fromUtf8("pBtn_getOutInStepAddValue"));
 
-        gridLayout_4->addWidget(pushButton_4, 0, 0, 1, 1);
+        gridLayout_4->addWidget(pBtn_getOutInStepAddValue, 0, 0, 1, 1);
 
-        pushButton_5 = new QPushButton(groupBox_10);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pBtn_setOutInStepAddValue = new QPushButton(groupBox_10);
+        pBtn_setOutInStepAddValue->setObjectName(QString::fromUtf8("pBtn_setOutInStepAddValue"));
 
-        gridLayout_4->addWidget(pushButton_5, 3, 0, 1, 1);
+        gridLayout_4->addWidget(pBtn_setOutInStepAddValue, 3, 0, 1, 1);
 
-        groupBox_11 = new QGroupBox(widget_2);
+        spinBox_outinStepAddValue = new QSpinBox(groupBox_10);
+        spinBox_outinStepAddValue->setObjectName(QString::fromUtf8("spinBox_outinStepAddValue"));
+
+        gridLayout_4->addWidget(spinBox_outinStepAddValue, 2, 0, 1, 1);
+
+        groupBox_11 = new QGroupBox(widget_Status);
         groupBox_11->setObjectName(QString::fromUtf8("groupBox_11"));
-        groupBox_11->setGeometry(QRect(10, 170, 198, 113));
+        groupBox_11->setGeometry(QRect(10, 150, 241, 201));
         gridLayout_5 = new QGridLayout(groupBox_11);
         gridLayout_5->setSpacing(6);
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        pushButton_6 = new QPushButton(groupBox_11);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pBtn_getXKVoltage = new QPushButton(groupBox_11);
+        pBtn_getXKVoltage->setObjectName(QString::fromUtf8("pBtn_getXKVoltage"));
 
-        gridLayout_5->addWidget(pushButton_6, 0, 0, 1, 1);
+        gridLayout_5->addWidget(pBtn_getXKVoltage, 0, 0, 1, 1);
 
-        pushButton_12 = new QPushButton(groupBox_11);
-        pushButton_12->setObjectName(QString::fromUtf8("pushButton_12"));
+        pBtn_getOC = new QPushButton(groupBox_11);
+        pBtn_getOC->setObjectName(QString::fromUtf8("pBtn_getOC"));
 
-        gridLayout_5->addWidget(pushButton_12, 0, 1, 1, 2);
+        gridLayout_5->addWidget(pBtn_getOC, 1, 2, 1, 1);
 
-        pushButton_7 = new QPushButton(groupBox_11);
-        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pBtn_getPressValue = new QPushButton(groupBox_11);
+        pBtn_getPressValue->setObjectName(QString::fromUtf8("pBtn_getPressValue"));
 
-        gridLayout_5->addWidget(pushButton_7, 1, 0, 1, 1);
+        gridLayout_5->addWidget(pBtn_getPressValue, 3, 2, 1, 1);
 
-        pushButton_13 = new QPushButton(groupBox_11);
-        pushButton_13->setObjectName(QString::fromUtf8("pushButton_13"));
+        pBtn_getSanSheVoltage = new QPushButton(groupBox_11);
+        pBtn_getSanSheVoltage->setObjectName(QString::fromUtf8("pBtn_getSanSheVoltage"));
 
-        gridLayout_5->addWidget(pushButton_13, 1, 1, 1, 2);
+        gridLayout_5->addWidget(pBtn_getSanSheVoltage, 2, 2, 1, 1);
 
-        pushButton_20 = new QPushButton(groupBox_11);
-        pushButton_20->setObjectName(QString::fromUtf8("pushButton_20"));
+        pBt_getTemp = new QPushButton(groupBox_11);
+        pBt_getTemp->setObjectName(QString::fromUtf8("pBt_getTemp"));
 
-        gridLayout_5->addWidget(pushButton_20, 2, 0, 1, 1);
+        gridLayout_5->addWidget(pBt_getTemp, 4, 0, 1, 1);
 
-        pushButton_14 = new QPushButton(groupBox_11);
-        pushButton_14->setObjectName(QString::fromUtf8("pushButton_14"));
+        pBtn_getCurrentVoltage = new QPushButton(groupBox_11);
+        pBtn_getCurrentVoltage->setObjectName(QString::fromUtf8("pBtn_getCurrentVoltage"));
 
-        gridLayout_5->addWidget(pushButton_14, 2, 1, 1, 2);
+        gridLayout_5->addWidget(pBtn_getCurrentVoltage, 0, 2, 1, 1);
 
-        textEdit_2 = new QTextEdit(widget_2);
-        textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        textEdit_2->setGeometry(QRect(370, 0, 231, 371));
-        tabWidget->addTab(widget_2, QString());
+        pBtn_getMicroSwitch = new QPushButton(groupBox_11);
+        pBtn_getMicroSwitch->setObjectName(QString::fromUtf8("pBtn_getMicroSwitch"));
+
+        gridLayout_5->addWidget(pBtn_getMicroSwitch, 1, 0, 1, 1);
+
+        pBtn_getVersion = new QPushButton(groupBox_11);
+        pBtn_getVersion->setObjectName(QString::fromUtf8("pBtn_getVersion"));
+
+        gridLayout_5->addWidget(pBtn_getVersion, 4, 2, 1, 1);
+
+        pBtn_getTouSheVoltage = new QPushButton(groupBox_11);
+        pBtn_getTouSheVoltage->setObjectName(QString::fromUtf8("pBtn_getTouSheVoltage"));
+
+        gridLayout_5->addWidget(pBtn_getTouSheVoltage, 2, 0, 1, 1);
+
+        pBtn_getBioTestMode = new QPushButton(groupBox_11);
+        pBtn_getBioTestMode->setObjectName(QString::fromUtf8("pBtn_getBioTestMode"));
+
+        gridLayout_5->addWidget(pBtn_getBioTestMode, 5, 0, 1, 1);
+
+        pBtn_getElectrol = new QPushButton(groupBox_11);
+        pBtn_getElectrol->setObjectName(QString::fromUtf8("pBtn_getElectrol"));
+
+        gridLayout_5->addWidget(pBtn_getElectrol, 3, 0, 1, 1);
+
+        groupBox_13 = new QGroupBox(widget_Status);
+        groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
+        groupBox_13->setGeometry(QRect(260, 10, 111, 131));
+        gridLayout_7 = new QGridLayout(groupBox_13);
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setContentsMargins(11, 11, 11, 11);
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        pBtn_setPumpSpeed = new QPushButton(groupBox_13);
+        pBtn_setPumpSpeed->setObjectName(QString::fromUtf8("pBtn_setPumpSpeed"));
+
+        gridLayout_7->addWidget(pBtn_setPumpSpeed, 3, 0, 1, 1);
+
+        pBtn_getPumpSpeed = new QPushButton(groupBox_13);
+        pBtn_getPumpSpeed->setObjectName(QString::fromUtf8("pBtn_getPumpSpeed"));
+
+        gridLayout_7->addWidget(pBtn_getPumpSpeed, 0, 0, 1, 1);
+
+        label_8 = new QLabel(groupBox_13);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        gridLayout_7->addWidget(label_8, 1, 0, 1, 1);
+
+        spinBox_pumpSpeed = new QSpinBox(groupBox_13);
+        spinBox_pumpSpeed->setObjectName(QString::fromUtf8("spinBox_pumpSpeed"));
+
+        gridLayout_7->addWidget(spinBox_pumpSpeed, 2, 0, 1, 1);
+
+        textEdit_backMsgStatusMenu = new QTextEdit(widget_Status);
+        textEdit_backMsgStatusMenu->setObjectName(QString::fromUtf8("textEdit_backMsgStatusMenu"));
+        textEdit_backMsgStatusMenu->setGeometry(QRect(380, 10, 221, 361));
+        groupBox_14 = new QGroupBox(widget_Status);
+        groupBox_14->setObjectName(QString::fromUtf8("groupBox_14"));
+        groupBox_14->setGeometry(QRect(260, 150, 111, 201));
+        gridLayout_9 = new QGridLayout(groupBox_14);
+        gridLayout_9->setSpacing(6);
+        gridLayout_9->setContentsMargins(11, 11, 11, 11);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        label_10 = new QLabel(groupBox_14);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        gridLayout_9->addWidget(label_10, 0, 0, 1, 1);
+
+        pBtn_setDRegister = new QPushButton(groupBox_14);
+        pBtn_setDRegister->setObjectName(QString::fromUtf8("pBtn_setDRegister"));
+
+        gridLayout_9->addWidget(pBtn_setDRegister, 5, 0, 1, 1);
+
+        comboBox_DRegister = new QComboBox(groupBox_14);
+        comboBox_DRegister->setObjectName(QString::fromUtf8("comboBox_DRegister"));
+
+        gridLayout_9->addWidget(comboBox_DRegister, 1, 0, 1, 1);
+
+        pBtn_getDRegister = new QPushButton(groupBox_14);
+        pBtn_getDRegister->setObjectName(QString::fromUtf8("pBtn_getDRegister"));
+
+        gridLayout_9->addWidget(pBtn_getDRegister, 2, 0, 1, 1);
+
+        label_7 = new QLabel(groupBox_14);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        gridLayout_9->addWidget(label_7, 3, 0, 1, 1);
+
+        spinBox_DRegister = new QSpinBox(groupBox_14);
+        spinBox_DRegister->setObjectName(QString::fromUtf8("spinBox_DRegister"));
+
+        gridLayout_9->addWidget(spinBox_DRegister, 4, 0, 1, 1);
+
+        tabWidget->addTab(widget_Status, QString());
+        tab_WBC = new QWidget();
+        tab_WBC->setObjectName(QString::fromUtf8("tab_WBC"));
+        tabWidget->addTab(tab_WBC, QString());
+        tab_RBCPLT = new QWidget();
+        tab_RBCPLT->setObjectName(QString::fromUtf8("tab_RBCPLT"));
+        tabWidget->addTab(tab_RBCPLT, QString());
+        tab_bioTest = new QWidget();
+        tab_bioTest->setObjectName(QString::fromUtf8("tab_bioTest"));
+        tabWidget->addTab(tab_bioTest, QString());
+        tab_mcuUpdate = new QWidget();
+        tab_mcuUpdate->setObjectName(QString::fromUtf8("tab_mcuUpdate"));
+        tabWidget->addTab(tab_mcuUpdate, QString());
         pBtn_UDPOpen = new QPushButton(centralWidget);
         pBtn_UDPOpen->setObjectName(QString::fromUtf8("pBtn_UDPOpen"));
         pBtn_UDPOpen->setGeometry(QRect(10, 240, 75, 23));
@@ -465,7 +633,7 @@ public:
         groupBox_selfMsg->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 816, 23));
+        menuBar->setGeometry(QRect(0, 0, 809, 23));
         menuTool = new QMenu(menuBar);
         menuTool->setObjectName(QString::fromUtf8("menuTool"));
         menuEdit = new QMenu(menuBar);
@@ -506,26 +674,24 @@ public:
         groupBox_2->setTitle(QApplication::translate("MainWindow", "\350\277\234\347\250\213\347\275\221\347\273\234\350\256\276\347\275\256", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "\350\277\234\347\250\213\347\253\257\345\217\243\357\274\232", nullptr));
         label_4->setText(QApplication::translate("MainWindow", "\350\277\234\347\250\213IP\357\274\232", nullptr));
-        groupBox_5->setTitle(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\346\216\247\345\210\266", nullptr));
-        pBtn_mainMotorIn->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\350\277\233\344\273\223", nullptr));
-        pBtn_mainMotorOut->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\345\207\272\344\273\223", nullptr));
-        pBtn_cangIn->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\350\277\233\344\273\223", nullptr));
-        pBtn_cangOut->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\345\207\272\344\273\223", nullptr));
         groupBox_4->setTitle(QApplication::translate("MainWindow", "LED\347\201\257\346\216\247\345\210\266", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "LED\347\274\226\345\217\267\357\274\232", nullptr));
         pBtn_ledOpen->setText(QApplication::translate("MainWindow", "\347\201\257\345\274\200", nullptr));
         pBtn_ledClose->setText(QApplication::translate("MainWindow", "\347\201\257\345\205\263", nullptr));
-        groupBox_6->setTitle(QApplication::translate("MainWindow", "\351\230\200\346\216\247\345\210\266", nullptr));
+        pBtn_ledMotorSelect->setText(QApplication::translate("MainWindow", "\350\275\254\347\233\230\351\200\211\347\201\257", nullptr));
+        groupBox_6->setTitle(QApplication::translate("MainWindow", "\347\224\265\346\234\272\351\230\200\346\216\247\345\210\266", nullptr));
         pBtn_liquidValveOpen->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\274\200", nullptr));
-        pBtn_airValveOpen->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\274\200", nullptr));
         pBtn_liquidValveClose->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\205\263", nullptr));
+        pBtn_airValveOpen->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\274\200", nullptr));
         pBtn_airValveClose->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\205\263", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "\346\263\265\346\216\247\345\210\266", nullptr));
+        pBtn_mainMotorIn->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\350\277\233\344\273\223", nullptr));
+        pBtn_mainMotorOut->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\345\207\272\344\273\223", nullptr));
+        pBtn_cangIn->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\350\277\233\344\273\223", nullptr));
+        pBtn_cangOut->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\345\207\272\344\273\223", nullptr));
+        pBtn_fixMotorClose->setText(QApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\345\244\271\347\264\247", nullptr));
+        pBtn_fixMotorOpen->setText(QApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\346\235\276\345\274\200", nullptr));
         pBtn_pumpOpen->setText(QApplication::translate("MainWindow", "\346\263\265\345\274\200", nullptr));
         pBtn_pumpClose->setText(QApplication::translate("MainWindow", "\346\263\265\345\205\263", nullptr));
-        label_7->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\357\274\232", nullptr));
-        lineEdit_pumpSpeed->setText(QApplication::translate("MainWindow", "1500", nullptr));
-        pBtn_pumpSpeedSet->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\350\256\276\347\275\256", nullptr));
         groupBox_7->setTitle(QApplication::translate("MainWindow", "\346\265\213\350\257\225", nullptr));
         pBtn_WBCTest->setText(QApplication::translate("MainWindow", "WBC\346\265\213\350\257\225", nullptr));
         pBtn_RBCPLT_Test->setText(QApplication::translate("MainWindow", "RBC_PLT\346\265\213\350\257\225", nullptr));
@@ -535,33 +701,53 @@ public:
         pBtn_CRPTest->setText(QApplication::translate("MainWindow", "CRP\346\265\213\350\257\225", nullptr));
         pBtn_backGroundHGB->setText(QApplication::translate("MainWindow", "HGB\346\234\254\345\272\225\346\265\213\350\257\225", nullptr));
         pBtn_HGBTest->setText(QApplication::translate("MainWindow", "HGB\346\265\213\350\257\225", nullptr));
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "\350\207\252\346\243\200\345\217\212\350\200\201\345\214\226", nullptr));
-        pBtn_airLightSelfCheck->setText(QApplication::translate("MainWindow", "\345\257\206\351\227\255\346\200\247\350\207\252\346\243\200", nullptr));
-        pBtn_currentSelfCheck->setText(QApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\207\252\346\243\200", nullptr));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "\350\256\276\345\244\207\350\207\252\346\243\200", nullptr));
         pBtn_airValveSelfCheck->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\350\207\252\346\243\200", nullptr));
-        pBtn_motorInSelfCheck->setText(QApplication::translate("MainWindow", "\350\277\233\344\273\223\350\207\252\346\243\200", nullptr));
         pBtn_liquidValveSelfCheck->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\350\207\252\346\243\200", nullptr));
-        pBtn_pumpSelfCheck->setText(QApplication::translate("MainWindow", "\346\263\265\350\207\252\346\243\200", nullptr));
         pBtn_motorOutSelfCheck->setText(QApplication::translate("MainWindow", "\345\207\272\344\273\223\350\207\252\346\243\200", nullptr));
+        pBtn_motorInSelfCheck->setText(QApplication::translate("MainWindow", "\350\277\233\344\273\223\350\207\252\346\243\200", nullptr));
         pBtn_buildPressSelfCheck->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\350\207\252\346\243\200", nullptr));
+        pBtn_airLightSelfCheck->setText(QApplication::translate("MainWindow", "\345\257\206\351\227\255\346\200\247\350\207\252\346\243\200", nullptr));
+        pBtn_pumpSelfCheck->setText(QApplication::translate("MainWindow", "\346\263\265\350\207\252\346\243\200", nullptr));
+        pBtn_currentSelfCheck->setText(QApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\207\252\346\243\200", nullptr));
+        pBtn_mixingMotorSelfCheck->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
+        pBtn_turnMotorSelfCheck->setText(QApplication::translate("MainWindow", "\350\275\254\347\233\230\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
         groupBox_8->setTitle(QApplication::translate("MainWindow", "\350\277\224\345\233\236\346\266\210\346\201\257", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(widget), QApplication::translate("MainWindow", "\345\244\226\350\256\276\346\216\247\345\210\266\347\225\214\351\235\242", nullptr));
-        groupBox_9->setTitle(QApplication::translate("MainWindow", "GroupBox", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget_Ctrol), QApplication::translate("MainWindow", "\345\244\226\350\256\276\346\216\247\345\210\266\347\225\214\351\235\242", nullptr));
+        groupBox_9->setTitle(QApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
-        pushButton_3->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
-        groupBox_10->setTitle(QApplication::translate("MainWindow", "GroupBox", nullptr));
+        pBtn_getPressAddValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
+        pBtn_setPressAddValue->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
+        groupBox_10->setTitle(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277", nullptr));
         label_9->setText(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
-        pushButton_4->setText(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
-        pushButton_5->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
-        groupBox_11->setTitle(QApplication::translate("MainWindow", "GroupBox", nullptr));
-        pushButton_6->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\270\251\345\272\246", nullptr));
-        pushButton_12->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\201\222\346\265\201\346\272\220\347\224\265\345\216\213", nullptr));
-        pushButton_7->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\260\217\345\255\224\347\224\265\345\216\213", nullptr));
-        pushButton_13->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\260\224\345\216\213\345\200\274", nullptr));
-        pushButton_20->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\350\275\257\344\273\266\347\211\210\346\234\254", nullptr));
-        pushButton_14->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\205\211\350\200\246\347\212\266\346\200\201", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(widget_2), QApplication::translate("MainWindow", "\347\212\266\346\200\201\345\217\212\345\217\202\346\225\260\347\225\214\351\235\242", nullptr));
+        pBtn_getOutInStepAddValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
+        pBtn_setOutInStepAddValue->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
+        groupBox_11->setTitle(QApplication::translate("MainWindow", "\347\212\266\346\200\201\350\216\267\345\217\226", nullptr));
+        pBtn_getXKVoltage->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\260\217\345\255\224\347\224\265\345\216\213", nullptr));
+        pBtn_getOC->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\205\211\350\200\246\347\212\266\346\200\201", nullptr));
+        pBtn_getPressValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\260\224\345\216\213\345\200\274", nullptr));
+        pBtn_getSanSheVoltage->setText(QApplication::translate("MainWindow", "\346\225\243\345\260\204\347\224\265\345\216\213\345\200\274", nullptr));
+        pBt_getTemp->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\270\251\345\272\246", nullptr));
+        pBtn_getCurrentVoltage->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\201\222\346\265\201\346\272\220\347\224\265\345\216\213", nullptr));
+        pBtn_getMicroSwitch->setText(QApplication::translate("MainWindow", "\345\276\256\345\212\250\345\274\200\345\205\263\347\212\266\346\200\201", nullptr));
+        pBtn_getVersion->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\350\275\257\344\273\266\347\211\210\346\234\254", nullptr));
+        pBtn_getTouSheVoltage->setText(QApplication::translate("MainWindow", "\351\200\217\350\247\206\347\224\265\345\216\213\345\200\274", nullptr));
+        pBtn_getBioTestMode->setText(QApplication::translate("MainWindow", "\350\216\267\345\275\223\345\211\215\347\224\237\345\214\226\346\250\241\345\274\217", nullptr));
+        pBtn_getElectrol->setText(QApplication::translate("MainWindow", "\345\256\232\351\207\217\347\224\265\346\236\201\347\212\266\346\200\201\345\222\214\347\224\265\345\216\213", nullptr));
+        groupBox_13->setTitle(QApplication::translate("MainWindow", "\346\263\265\346\216\247\345\210\266", nullptr));
+        pBtn_setPumpSpeed->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\350\256\276\347\275\256", nullptr));
+        pBtn_getPumpSpeed->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\263\265\351\200\237", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\357\274\232", nullptr));
+        groupBox_14->setTitle(QApplication::translate("MainWindow", "\346\225\260\345\255\227\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "\351\200\211\346\213\251\347\224\265\344\275\215\345\231\250\347\274\226\345\217\267\357\274\232", nullptr));
+        pBtn_setDRegister->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        pBtn_getDRegister->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        label_7->setText(QApplication::translate("MainWindow", "\350\276\223\345\205\245\347\224\265\344\275\215\345\231\250\345\200\274\357\274\232", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget_Status), QApplication::translate("MainWindow", "\347\212\266\346\200\201\345\217\202\346\225\260\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_WBC), QApplication::translate("MainWindow", "WBC\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_RBCPLT), QApplication::translate("MainWindow", "RBC_PLT\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_bioTest), QApplication::translate("MainWindow", "\347\224\237\345\214\226\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_mcuUpdate), QApplication::translate("MainWindow", "MCU\345\215\207\347\272\247", nullptr));
         pBtn_UDPOpen->setText(QApplication::translate("MainWindow", "UDP\346\211\223\345\274\200", nullptr));
         pBtn_UDPClose->setText(QApplication::translate("MainWindow", "UDP\345\205\263\351\227\255", nullptr));
         groupBox_selfMsg->setTitle(QApplication::translate("MainWindow", "\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257(HEX)", nullptr));

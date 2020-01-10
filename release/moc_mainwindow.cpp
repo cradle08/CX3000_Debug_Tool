@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[46];
-    char stringdata0[1210];
+    QByteArrayData data[69];
+    char stringdata0[1919];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -76,7 +76,30 @@ QT_MOC_LITERAL(41, 1047, 35), // "on_pBtn_buildPressSelfCheck_c..."
 QT_MOC_LITERAL(42, 1083, 33), // "on_pBtn_airLightSelfCheck_cli..."
 QT_MOC_LITERAL(43, 1117, 29), // "on_pBtn_pumpSelfCheck_clicked"
 QT_MOC_LITERAL(44, 1147, 32), // "on_pBtn_currentSelfCheck_clicked"
-QT_MOC_LITERAL(45, 1180, 29) // "on_pBtn_selfDefineMsg_clicked"
+QT_MOC_LITERAL(45, 1180, 29), // "on_pBtn_selfDefineMsg_clicked"
+QT_MOC_LITERAL(46, 1210, 29), // "on_pBtn_fixMotorClose_clicked"
+QT_MOC_LITERAL(47, 1240, 28), // "on_pBtn_fixMotorOpen_clicked"
+QT_MOC_LITERAL(48, 1269, 25), // "on_pBtn_ledSelect_clicked"
+QT_MOC_LITERAL(49, 1295, 36), // "on_pBtn_mixingMotorSelfCheck_..."
+QT_MOC_LITERAL(50, 1332, 34), // "on_pBtn_turnMotorSelfCheck_cl..."
+QT_MOC_LITERAL(51, 1367, 32), // "on_pBtn_getPressAddValue_clicked"
+QT_MOC_LITERAL(52, 1400, 36), // "on_pBtn_getOutInStepAddValue_..."
+QT_MOC_LITERAL(53, 1437, 32), // "on_pBtn_setAddPressValue_clicked"
+QT_MOC_LITERAL(54, 1470, 36), // "on_pBtn_setOutInStepAddValue_..."
+QT_MOC_LITERAL(55, 1507, 28), // "on_pBtn_getPumpSpeed_clicked"
+QT_MOC_LITERAL(56, 1536, 28), // "on_pBtn_setPumpSpeed_clicked"
+QT_MOC_LITERAL(57, 1565, 28), // "on_pBtn_getXKVoltage_clicked"
+QT_MOC_LITERAL(58, 1594, 33), // "on_pBtn_getCurrentVoltage_cli..."
+QT_MOC_LITERAL(59, 1628, 30), // "on_pBtn_getMicroSwitch_clicked"
+QT_MOC_LITERAL(60, 1659, 21), // "on_pBtn_getOC_clicked"
+QT_MOC_LITERAL(61, 1681, 32), // "on_pBtn_getTouSheVoltage_clicked"
+QT_MOC_LITERAL(62, 1714, 32), // "on_pBtn_getSanSheVoltage_clicked"
+QT_MOC_LITERAL(63, 1747, 27), // "on_pBtn_getElectrol_clicked"
+QT_MOC_LITERAL(64, 1775, 29), // "on_pBtn_getPressValue_clicked"
+QT_MOC_LITERAL(65, 1805, 22), // "on_pBt_getTemp_clicked"
+QT_MOC_LITERAL(66, 1828, 26), // "on_pBtn_getVersion_clicked"
+QT_MOC_LITERAL(67, 1855, 30), // "on_pBtn_getBioTestMode_clicked"
+QT_MOC_LITERAL(68, 1886, 32) // "on_pBtn_setPressAddValue_clicked"
 
     },
     "MainWindow\0Recv_Msg_Handler\0\0Send_TestCmd\0"
@@ -116,7 +139,30 @@ QT_MOC_LITERAL(45, 1180, 29) // "on_pBtn_selfDefineMsg_clicked"
     "on_pBtn_airLightSelfCheck_clicked\0"
     "on_pBtn_pumpSelfCheck_clicked\0"
     "on_pBtn_currentSelfCheck_clicked\0"
-    "on_pBtn_selfDefineMsg_clicked"
+    "on_pBtn_selfDefineMsg_clicked\0"
+    "on_pBtn_fixMotorClose_clicked\0"
+    "on_pBtn_fixMotorOpen_clicked\0"
+    "on_pBtn_ledSelect_clicked\0"
+    "on_pBtn_mixingMotorSelfCheck_clicked\0"
+    "on_pBtn_turnMotorSelfCheck_clicked\0"
+    "on_pBtn_getPressAddValue_clicked\0"
+    "on_pBtn_getOutInStepAddValue_clicked\0"
+    "on_pBtn_setAddPressValue_clicked\0"
+    "on_pBtn_setOutInStepAddValue_clicked\0"
+    "on_pBtn_getPumpSpeed_clicked\0"
+    "on_pBtn_setPumpSpeed_clicked\0"
+    "on_pBtn_getXKVoltage_clicked\0"
+    "on_pBtn_getCurrentVoltage_clicked\0"
+    "on_pBtn_getMicroSwitch_clicked\0"
+    "on_pBtn_getOC_clicked\0"
+    "on_pBtn_getTouSheVoltage_clicked\0"
+    "on_pBtn_getSanSheVoltage_clicked\0"
+    "on_pBtn_getElectrol_clicked\0"
+    "on_pBtn_getPressValue_clicked\0"
+    "on_pBt_getTemp_clicked\0"
+    "on_pBtn_getVersion_clicked\0"
+    "on_pBtn_getBioTestMode_clicked\0"
+    "on_pBtn_setPressAddValue_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -126,7 +172,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      41,   14, // methods
+      64,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -134,47 +180,70 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  219,    2, 0x0a /* Public */,
-       3,    0,  220,    2, 0x0a /* Public */,
-       4,    1,  221,    2, 0x0a /* Public */,
-       7,    0,  224,    2, 0x0a /* Public */,
-       8,    1,  225,    2, 0x08 /* Private */,
-      10,    1,  228,    2, 0x08 /* Private */,
-      11,    0,  231,    2, 0x08 /* Private */,
-      12,    0,  232,    2, 0x08 /* Private */,
-      13,    0,  233,    2, 0x08 /* Private */,
-      14,    0,  234,    2, 0x08 /* Private */,
-      15,    0,  235,    2, 0x08 /* Private */,
-      16,    0,  236,    2, 0x08 /* Private */,
-      17,    0,  237,    2, 0x08 /* Private */,
-      18,    0,  238,    2, 0x08 /* Private */,
-      19,    0,  239,    2, 0x08 /* Private */,
-      20,    0,  240,    2, 0x08 /* Private */,
-      21,    0,  241,    2, 0x08 /* Private */,
-      22,    0,  242,    2, 0x08 /* Private */,
-      23,    0,  243,    2, 0x08 /* Private */,
-      24,    0,  244,    2, 0x08 /* Private */,
-      25,    0,  245,    2, 0x08 /* Private */,
-      26,    0,  246,    2, 0x08 /* Private */,
-      27,    0,  247,    2, 0x08 /* Private */,
-      28,    0,  248,    2, 0x08 /* Private */,
-      29,    0,  249,    2, 0x08 /* Private */,
-      30,    0,  250,    2, 0x08 /* Private */,
-      31,    0,  251,    2, 0x08 /* Private */,
-      32,    0,  252,    2, 0x08 /* Private */,
-      33,    0,  253,    2, 0x08 /* Private */,
-      34,    0,  254,    2, 0x08 /* Private */,
-      35,    0,  255,    2, 0x08 /* Private */,
-      36,    0,  256,    2, 0x08 /* Private */,
-      37,    0,  257,    2, 0x08 /* Private */,
-      38,    0,  258,    2, 0x08 /* Private */,
-      39,    0,  259,    2, 0x08 /* Private */,
-      40,    0,  260,    2, 0x08 /* Private */,
-      41,    0,  261,    2, 0x08 /* Private */,
-      42,    0,  262,    2, 0x08 /* Private */,
-      43,    0,  263,    2, 0x08 /* Private */,
-      44,    0,  264,    2, 0x08 /* Private */,
-      45,    0,  265,    2, 0x08 /* Private */,
+       1,    0,  334,    2, 0x0a /* Public */,
+       3,    0,  335,    2, 0x0a /* Public */,
+       4,    1,  336,    2, 0x0a /* Public */,
+       7,    0,  339,    2, 0x0a /* Public */,
+       8,    1,  340,    2, 0x08 /* Private */,
+      10,    1,  343,    2, 0x08 /* Private */,
+      11,    0,  346,    2, 0x08 /* Private */,
+      12,    0,  347,    2, 0x08 /* Private */,
+      13,    0,  348,    2, 0x08 /* Private */,
+      14,    0,  349,    2, 0x08 /* Private */,
+      15,    0,  350,    2, 0x08 /* Private */,
+      16,    0,  351,    2, 0x08 /* Private */,
+      17,    0,  352,    2, 0x08 /* Private */,
+      18,    0,  353,    2, 0x08 /* Private */,
+      19,    0,  354,    2, 0x08 /* Private */,
+      20,    0,  355,    2, 0x08 /* Private */,
+      21,    0,  356,    2, 0x08 /* Private */,
+      22,    0,  357,    2, 0x08 /* Private */,
+      23,    0,  358,    2, 0x08 /* Private */,
+      24,    0,  359,    2, 0x08 /* Private */,
+      25,    0,  360,    2, 0x08 /* Private */,
+      26,    0,  361,    2, 0x08 /* Private */,
+      27,    0,  362,    2, 0x08 /* Private */,
+      28,    0,  363,    2, 0x08 /* Private */,
+      29,    0,  364,    2, 0x08 /* Private */,
+      30,    0,  365,    2, 0x08 /* Private */,
+      31,    0,  366,    2, 0x08 /* Private */,
+      32,    0,  367,    2, 0x08 /* Private */,
+      33,    0,  368,    2, 0x08 /* Private */,
+      34,    0,  369,    2, 0x08 /* Private */,
+      35,    0,  370,    2, 0x08 /* Private */,
+      36,    0,  371,    2, 0x08 /* Private */,
+      37,    0,  372,    2, 0x08 /* Private */,
+      38,    0,  373,    2, 0x08 /* Private */,
+      39,    0,  374,    2, 0x08 /* Private */,
+      40,    0,  375,    2, 0x08 /* Private */,
+      41,    0,  376,    2, 0x08 /* Private */,
+      42,    0,  377,    2, 0x08 /* Private */,
+      43,    0,  378,    2, 0x08 /* Private */,
+      44,    0,  379,    2, 0x08 /* Private */,
+      45,    0,  380,    2, 0x08 /* Private */,
+      46,    0,  381,    2, 0x08 /* Private */,
+      47,    0,  382,    2, 0x08 /* Private */,
+      48,    0,  383,    2, 0x08 /* Private */,
+      49,    0,  384,    2, 0x08 /* Private */,
+      50,    0,  385,    2, 0x08 /* Private */,
+      51,    0,  386,    2, 0x08 /* Private */,
+      52,    0,  387,    2, 0x08 /* Private */,
+      53,    0,  388,    2, 0x08 /* Private */,
+      54,    0,  389,    2, 0x08 /* Private */,
+      55,    0,  390,    2, 0x08 /* Private */,
+      56,    0,  391,    2, 0x08 /* Private */,
+      57,    0,  392,    2, 0x08 /* Private */,
+      58,    0,  393,    2, 0x08 /* Private */,
+      59,    0,  394,    2, 0x08 /* Private */,
+      60,    0,  395,    2, 0x08 /* Private */,
+      61,    0,  396,    2, 0x08 /* Private */,
+      62,    0,  397,    2, 0x08 /* Private */,
+      63,    0,  398,    2, 0x08 /* Private */,
+      64,    0,  399,    2, 0x08 /* Private */,
+      65,    0,  400,    2, 0x08 /* Private */,
+      66,    0,  401,    2, 0x08 /* Private */,
+      67,    0,  402,    2, 0x08 /* Private */,
+      68,    0,  403,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -183,6 +252,29 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    9,
     QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -269,6 +361,29 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 38: _t->on_pBtn_pumpSelfCheck_clicked(); break;
         case 39: _t->on_pBtn_currentSelfCheck_clicked(); break;
         case 40: _t->on_pBtn_selfDefineMsg_clicked(); break;
+        case 41: _t->on_pBtn_fixMotorClose_clicked(); break;
+        case 42: _t->on_pBtn_fixMotorOpen_clicked(); break;
+        case 43: _t->on_pBtn_ledSelect_clicked(); break;
+        case 44: _t->on_pBtn_mixingMotorSelfCheck_clicked(); break;
+        case 45: _t->on_pBtn_turnMotorSelfCheck_clicked(); break;
+        case 46: _t->on_pBtn_getPressAddValue_clicked(); break;
+        case 47: _t->on_pBtn_getOutInStepAddValue_clicked(); break;
+        case 48: _t->on_pBtn_setAddPressValue_clicked(); break;
+        case 49: _t->on_pBtn_setOutInStepAddValue_clicked(); break;
+        case 50: _t->on_pBtn_getPumpSpeed_clicked(); break;
+        case 51: _t->on_pBtn_setPumpSpeed_clicked(); break;
+        case 52: _t->on_pBtn_getXKVoltage_clicked(); break;
+        case 53: _t->on_pBtn_getCurrentVoltage_clicked(); break;
+        case 54: _t->on_pBtn_getMicroSwitch_clicked(); break;
+        case 55: _t->on_pBtn_getOC_clicked(); break;
+        case 56: _t->on_pBtn_getTouSheVoltage_clicked(); break;
+        case 57: _t->on_pBtn_getSanSheVoltage_clicked(); break;
+        case 58: _t->on_pBtn_getElectrol_clicked(); break;
+        case 59: _t->on_pBtn_getPressValue_clicked(); break;
+        case 60: _t->on_pBt_getTemp_clicked(); break;
+        case 61: _t->on_pBtn_getVersion_clicked(); break;
+        case 62: _t->on_pBtn_getBioTestMode_clicked(); break;
+        case 63: _t->on_pBtn_setPressAddValue_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -314,13 +429,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 41)
+        if (_id < 64)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 41;
+        _id -= 64;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 41)
+        if (_id < 64)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 41;
+        _id -= 64;
     }
     return _id;
 }

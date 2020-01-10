@@ -6,10 +6,14 @@
 #include <QLabel>
 #include <QSettings>
 #include <QPushButton>
+#include <QByteArray>
+#include <queue>
 
 namespace Ui {
 class MainWindow;
 }
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -104,6 +108,52 @@ private slots:
 
     void on_pBtn_selfDefineMsg_clicked();
 
+    void on_pBtn_fixMotorClose_clicked();
+
+    void on_pBtn_fixMotorOpen_clicked();
+
+    void on_pBtn_ledSelect_clicked();
+
+    void on_pBtn_mixingMotorSelfCheck_clicked();
+
+    void on_pBtn_turnMotorSelfCheck_clicked();
+
+    void on_pBtn_getPressAddValue_clicked();
+
+    void on_pBtn_getOutInStepAddValue_clicked();
+
+    void on_pBtn_setAddPressValue_clicked();
+
+    void on_pBtn_setOutInStepAddValue_clicked();
+
+    void on_pBtn_getPumpSpeed_clicked();
+
+    void on_pBtn_setPumpSpeed_clicked();
+
+    void on_pBtn_getXKVoltage_clicked();
+
+    void on_pBtn_getCurrentVoltage_clicked();
+
+    void on_pBtn_getMicroSwitch_clicked();
+
+    void on_pBtn_getOC_clicked();
+
+    void on_pBtn_getTouSheVoltage_clicked();
+
+    void on_pBtn_getSanSheVoltage_clicked();
+
+    void on_pBtn_getElectrol_clicked();
+
+    void on_pBtn_getPressValue_clicked();
+
+    void on_pBt_getTemp_clicked();
+
+    void on_pBtn_getVersion_clicked();
+
+    void on_pBtn_getBioTestMode_clicked();
+
+    void on_pBtn_setPressAddValue_clicked();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *socketUdp;
@@ -111,6 +161,10 @@ private:
     QHostAddress stLocalIP, stRemoteIP;
     unsigned short nLocalPort, nRemotePort;
     QSettings *configIni;
+    //QQueue<int> stQueue;
+    // QQueue<int> queue;
+    //Queue<int> DataBuffer;
+     QList<QByteArray> stList;
     int nNum;
 
 };

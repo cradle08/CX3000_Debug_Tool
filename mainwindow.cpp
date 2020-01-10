@@ -14,6 +14,8 @@
 #include <QTextCodec>
 #include <QVariant>
 #include <QIcon>
+#include <QQueue>
+#include <QByteArray>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -45,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // init local port
     str = QString::number(nLocalPort);
     ui->lineEdit_localPort->setText(str);
+    // list init
+    stList.clear();
 
     // UDP init
     label_barStatus = new QLabel("Socket Status ...");
@@ -79,9 +83,6 @@ void MainWindow::Config_Init()
     configIni = new QSettings(tr("%1/config.ini").arg(strProjectPath), QSettings::IniFormat);
     //configIni.setIniCodec(QTextCodec::codecForName("UTF-8"));
     configIni->setIniCodec("UTF-8");
-
-    QString str = configIni->value("/Protocol/Test").toString();
-    qDebug() <<"Test:" << str;
 }
 
 
@@ -110,7 +111,6 @@ void MainWindow::Send_TestCmd()
 
 void MainWindow::Recv_Msg_Handler()
 {
-    qDebug() << "Recv Msg";
     while(socketUdp->hasPendingDatagrams())
     {
         QByteArray RecvData;
@@ -122,11 +122,17 @@ void MainWindow::Recv_Msg_Handler()
         {
             RecvData.resize(nLen);
             socketUdp->readDatagram(RecvData.data(), nLen, &stRecvAddr, &nRecvPort);
-            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort;
-            QString strData = RecvData.data();
-            qDebug() << strData;
+            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort<<"Data:"<<RecvData;
+            //QString strData = RecvData.data();
+            stList.append(RecvData);
         }
         //QNetworkDatagram datagram = socketUdp->receiveDatagram();
+
+        if(!stList.isEmpty())
+        {
+            RecvData = stList.takeFirst();
+
+        }
     }
 }
 
@@ -347,7 +353,7 @@ void MainWindow::on_pBtn_pumpSpeedSet_clicked()
     configIni->endGroup();
     qDebug()<<str <<"=" << msg;
 
-    unsigned int val =  ui->lineEdit_pumpSpeed->text().toUInt();
+    unsigned int val =  ui->spinBox_pumpSpeed->text().toUInt();
     qDebug() << val;
 
     QString strstr;
@@ -463,3 +469,143 @@ void MainWindow::on_pBtn_selfDefineMsg_clicked()
     QByteArray data = QByteArray::fromHex(msg.toUtf8());
     socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
 }
+
+void MainWindow::on_pBtn_fixMotorClose_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_fixMotorOpen_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_ledSelect_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_mixingMotorSelfCheck_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_turnMotorSelfCheck_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getPressAddValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_setPressAddValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_setAddPressValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getOutInStepAddValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_setOutInStepAddValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getPumpSpeed_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_setPumpSpeed_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getXKVoltage_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getCurrentVoltage_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getMicroSwitch_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getOC_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getTouSheVoltage_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getSanSheVoltage_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getElectrol_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getPressValue_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBt_getTemp_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getVersion_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+void MainWindow::on_pBtn_getBioTestMode_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    Button_Send_Msg_Handler(pBtn);
+}
+
+
