@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QByteArray>
 #include <queue>
+#include <QtCharts>
 
 namespace Ui {
 class MainWindow;
@@ -27,11 +28,20 @@ signals:
 public slots:
     void Recv_Msg_Handler();
     void Send_TestCmd();
-    void Button_Send_Msg_Handler(QPushButton *pBtn);
-    void Config_Init();
+    QString Button_Send_Msg_Handler(QPushButton *pBtn);
 
 public:
+    enum {
+        EN_TAB_INDEX_CTROL   = 0,
+        EN_TAB_INDEX_WBC     = 1,
+        EN_TAB_INDEX_RBC_PLT = 2,
+        EN_TAB_INDEX_BIO     = 3,
+        EN_TAB_INDEX_UPDATE  = 4,
+    };
     void LED_Combobox_Init();
+    void Config_Init();
+    void CreatCharts();
+
 
 private slots:
     void on_lineEdit_localPort_textChanged(const QString &arg1);
@@ -122,8 +132,6 @@ private slots:
 
     void on_pBtn_getOutInStepAddValue_clicked();
 
-    void on_pBtn_setAddPressValue_clicked();
-
     void on_pBtn_setOutInStepAddValue_clicked();
 
     void on_pBtn_getPumpSpeed_clicked();
@@ -154,6 +162,12 @@ private slots:
 
     void on_pBtn_setPressAddValue_clicked();
 
+    void on_pBtn_ledMotorSelect_clicked();
+
+    void on_pBtn_getDRegister_clicked();
+
+    void on_pBtn_setDRegister_clicked();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *socketUdp;
@@ -164,7 +178,7 @@ private:
     //QQueue<int> stQueue;
     // QQueue<int> queue;
     //Queue<int> DataBuffer;
-     QList<QByteArray> stList;
+     QList<QByteArray*> stList;
     int nNum;
 
 };

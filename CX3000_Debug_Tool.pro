@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += network
+QT       += charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CX3000_Debug_Tool
@@ -33,6 +34,8 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+RC_ICONS = blood_96px.ico
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
