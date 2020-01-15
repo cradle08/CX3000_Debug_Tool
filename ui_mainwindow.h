@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.2
+** Created by: Qt User Interface Compiler version 5.12.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -139,6 +139,11 @@ public:
     QPushButton *pBtn_getPumpSpeed;
     QLabel *label_8;
     QSpinBox *spinBox_pumpSpeed;
+    QGroupBox *groupBox_15;
+    QGridLayout *gridLayout_8;
+    QPushButton *pBtn_setCurrentLightPath;
+    QLabel *label_11;
+    QSpinBox *spinBox_currentLightPath;
     QWidget *tab_WBC;
     QWidget *tab_RBCPLT;
     QWidget *tab_bioTest;
@@ -625,6 +630,30 @@ public:
 
         gridLayout_7->addWidget(spinBox_pumpSpeed, 2, 0, 1, 1);
 
+        groupBox_15 = new QGroupBox(tab_Pameter);
+        groupBox_15->setObjectName(QString::fromUtf8("groupBox_15"));
+        groupBox_15->setGeometry(QRect(370, 0, 111, 131));
+        gridLayout_8 = new QGridLayout(groupBox_15);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        pBtn_setCurrentLightPath = new QPushButton(groupBox_15);
+        pBtn_setCurrentLightPath->setObjectName(QString::fromUtf8("pBtn_setCurrentLightPath"));
+
+        gridLayout_8->addWidget(pBtn_setCurrentLightPath, 2, 0, 1, 1);
+
+        label_11 = new QLabel(groupBox_15);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout_8->addWidget(label_11, 0, 0, 1, 1);
+
+        spinBox_currentLightPath = new QSpinBox(groupBox_15);
+        spinBox_currentLightPath->setObjectName(QString::fromUtf8("spinBox_currentLightPath"));
+        spinBox_currentLightPath->setMaximum(99);
+        spinBox_currentLightPath->setValue(20);
+
+        gridLayout_8->addWidget(spinBox_currentLightPath, 1, 0, 1, 1);
+
         tabWidget_Status->addTab(tab_Pameter, QString());
         tabWidget->addTab(widget_Ctrol, QString());
         tab_WBC = new QWidget();
@@ -698,98 +727,101 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        gBx_Control->setTitle(QCoreApplication::translate("MainWindow", "\346\234\254\345\234\260\347\275\221\347\273\234\350\256\276\347\275\256", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\346\234\254\345\234\260\347\253\257\345\217\243\357\274\232", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\346\234\254\345\234\260IP\357\274\232", nullptr));
-        groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "\350\277\234\347\250\213\347\275\221\347\273\234\350\256\276\347\275\256", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "\350\277\234\347\250\213\347\253\257\345\217\243\357\274\232", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "\350\277\234\347\250\213IP\357\274\232", nullptr));
-        groupBox_8->setTitle(QCoreApplication::translate("MainWindow", "\350\277\224\345\233\236\346\266\210\346\201\257", nullptr));
-        groupBox_4->setTitle(QCoreApplication::translate("MainWindow", "LED\347\201\257\346\216\247\345\210\266", nullptr));
-        pBtn_ledClose->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\205\263", nullptr));
-        pBtn_ledMotorSelect->setText(QCoreApplication::translate("MainWindow", "\350\275\254\347\233\230\351\200\211\347\201\257", nullptr));
-        pBtn_ledOpen->setText(QCoreApplication::translate("MainWindow", "\347\201\257\345\274\200", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "LED\347\274\226\345\217\267\357\274\232", nullptr));
-        pBtn_turnMotorReset->setText(QCoreApplication::translate("MainWindow", "\350\275\254\347\233\230\345\244\215\344\275\215", nullptr));
-        groupBox_7->setTitle(QCoreApplication::translate("MainWindow", "\346\265\213\350\257\225", nullptr));
-        pBtn_WBCTest->setText(QCoreApplication::translate("MainWindow", "WBC\346\265\213\350\257\225", nullptr));
-        pBtn_RBCPLT_Test->setText(QCoreApplication::translate("MainWindow", "RBC_PLT\346\265\213\350\257\225", nullptr));
-        pBtn_HGBTest->setText(QCoreApplication::translate("MainWindow", "HGB\346\265\213\350\257\225", nullptr));
-        pBtn_CRPTest->setText(QCoreApplication::translate("MainWindow", "CRP\346\265\213\350\257\225", nullptr));
-        pBtn_setHGBMode->setText(QCoreApplication::translate("MainWindow", "HGB\346\265\213\350\257\225\346\250\241\345\274\217", nullptr));
-        pBtn_setCRPMode->setText(QCoreApplication::translate("MainWindow", "CRP\346\250\241\345\274\217\346\250\241\345\274\217", nullptr));
-        pBtn_backGroundCRP->setText(QCoreApplication::translate("MainWindow", "CRP\346\234\254\345\272\225\346\265\213\350\257\225", nullptr));
-        pBtn_backGroundHGB->setText(QCoreApplication::translate("MainWindow", "HGB\346\234\254\345\272\225\346\265\213\350\257\225", nullptr));
-        pBtn_getSanSheVoltage->setText(QCoreApplication::translate("MainWindow", "\346\225\243\345\260\204\347\224\265\345\216\213\345\200\274", nullptr));
-        pBtn_getTouSheVoltage->setText(QCoreApplication::translate("MainWindow", "\351\200\217\350\247\206\347\224\265\345\216\213\345\200\274", nullptr));
-        groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "\350\256\276\345\244\207\350\207\252\346\243\200", nullptr));
-        pBtn_airValveSelfCheck->setText(QCoreApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\350\207\252\346\243\200", nullptr));
-        pBtn_liquidValveSelfCheck->setText(QCoreApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\350\207\252\346\243\200", nullptr));
-        pBtn_motorOutSelfCheck->setText(QCoreApplication::translate("MainWindow", "\345\207\272\344\273\223\350\207\252\346\243\200", nullptr));
-        pBtn_motorInSelfCheck->setText(QCoreApplication::translate("MainWindow", "\350\277\233\344\273\223\350\207\252\346\243\200", nullptr));
-        pBtn_buildPressSelfCheck->setText(QCoreApplication::translate("MainWindow", "\345\273\272\345\216\213\350\207\252\346\243\200", nullptr));
-        pBtn_airLightSelfCheck->setText(QCoreApplication::translate("MainWindow", "\345\257\206\351\227\255\346\200\247\350\207\252\346\243\200", nullptr));
-        pBtn_pumpSelfCheck->setText(QCoreApplication::translate("MainWindow", "\346\263\265\350\207\252\346\243\200", nullptr));
-        pBtn_currentSelfCheck->setText(QCoreApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\207\252\346\243\200", nullptr));
-        pBtn_mixingMotorSelfCheck->setText(QCoreApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
-        pBtn_turnMotorSelfCheck->setText(QCoreApplication::translate("MainWindow", "\350\275\254\347\233\230\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
-        groupBox_6->setTitle(QCoreApplication::translate("MainWindow", "\347\224\265\346\234\272\351\230\200\346\216\247\345\210\266", nullptr));
-        pBtn_mainMotorIn->setText(QCoreApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\350\277\233\344\273\223", nullptr));
-        pBtn_mainMotorOut->setText(QCoreApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\345\207\272\344\273\223", nullptr));
-        pBtn_fixMotorClose->setText(QCoreApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\345\244\271\347\264\247", nullptr));
-        pBtn_liquidValveOpen->setText(QCoreApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\274\200", nullptr));
-        pBtn_airValveOpen->setText(QCoreApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\274\200", nullptr));
-        pBtn_airValveClose->setText(QCoreApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\205\263", nullptr));
-        pBtn_fixMotorOpen->setText(QCoreApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\346\235\276\345\274\200", nullptr));
-        pBtn_cangOut->setText(QCoreApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\345\207\272\344\273\223", nullptr));
-        pBtn_liquidValveClose->setText(QCoreApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\205\263", nullptr));
-        pBtn_cangIn->setText(QCoreApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\350\277\233\344\273\223", nullptr));
-        pBtn_pumpOpen->setText(QCoreApplication::translate("MainWindow", "\346\263\265\345\274\200", nullptr));
-        pBtn_pumpClose->setText(QCoreApplication::translate("MainWindow", "\346\263\265\345\205\263", nullptr));
-        pBtn_mixingMotorOpen->setText(QCoreApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\274\200", nullptr));
-        pBtn_mixingMotorClose->setText(QCoreApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\205\263", nullptr));
-        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Ctrol), QCoreApplication::translate("MainWindow", "   \346\216\247\345\210\266   ", nullptr));
-        groupBox_11->setTitle(QCoreApplication::translate("MainWindow", "\347\212\266\346\200\201\350\216\267\345\217\226", nullptr));
-        pBtn_getPressValue->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\346\260\224\345\216\213\345\200\274", nullptr));
-        pBtn_getMicroSwitch->setText(QCoreApplication::translate("MainWindow", "\345\276\256\345\212\250\345\274\200\345\205\263\347\212\266\346\200\201", nullptr));
-        pBtn_getElectrol->setText(QCoreApplication::translate("MainWindow", "\345\256\232\351\207\217\347\224\265\346\236\201\347\212\266\346\200\201\345\222\214\347\224\265\345\216\213", nullptr));
-        pBtn_getVersion->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\350\275\257\344\273\266\347\211\210\346\234\254", nullptr));
-        pBtn_getXKVoltage->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\345\260\217\345\255\224\347\224\265\345\216\213", nullptr));
-        pBtn_getOC->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\345\205\211\350\200\246\347\212\266\346\200\201", nullptr));
-        pBt_getTemp->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\346\270\251\345\272\246", nullptr));
-        pBtn_getCurrentVoltage->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\346\201\222\346\265\201\346\272\220\347\224\265\345\216\213", nullptr));
-        pBtn_getBioTestMode->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\275\223\345\211\215\347\224\237\345\214\226\346\250\241\345\274\217", nullptr));
-        groupBox_9->setTitle(QCoreApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
-        pBtn_getPressAddValue->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
-        pBtn_setPressAddValue->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
-        groupBox_14->setTitle(QCoreApplication::translate("MainWindow", "\346\225\260\345\255\227\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
-        label_10->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\347\224\265\344\275\215\345\231\250\347\274\226\345\217\267\357\274\232", nullptr));
-        pBtn_setDRegister->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
-        pBtn_getDRegister->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
-        label_7->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\347\224\265\344\275\215\345\231\250\345\200\274\357\274\232", nullptr));
-        groupBox_10->setTitle(QCoreApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277", nullptr));
-        label_9->setText(QCoreApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
-        pBtn_getOutInStepAddValue->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
-        pBtn_setOutInStepAddValue->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
-        groupBox_13->setTitle(QCoreApplication::translate("MainWindow", "\346\263\265\346\216\247\345\210\266", nullptr));
-        pBtn_setPumpSpeed->setText(QCoreApplication::translate("MainWindow", "\346\263\265\351\200\237\350\256\276\347\275\256", nullptr));
-        pBtn_getPumpSpeed->setText(QCoreApplication::translate("MainWindow", "\350\216\267\345\217\226\346\263\265\351\200\237", nullptr));
-        label_8->setText(QCoreApplication::translate("MainWindow", "\346\263\265\351\200\237\357\274\232", nullptr));
-        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Pameter), QCoreApplication::translate("MainWindow", "   \345\217\202\346\225\260   ", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(widget_Ctrol), QCoreApplication::translate("MainWindow", "\345\244\226\350\256\276\346\216\247\345\210\266\347\225\214\351\235\242", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_WBC), QCoreApplication::translate("MainWindow", "WBC\347\225\214\351\235\242", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_RBCPLT), QCoreApplication::translate("MainWindow", "RBC_PLT\347\225\214\351\235\242", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_bioTest), QCoreApplication::translate("MainWindow", "\347\224\237\345\214\226\347\225\214\351\235\242", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_mcuUpdate), QCoreApplication::translate("MainWindow", "MCU\345\215\207\347\272\247", nullptr));
-        pBtn_UDPOpen->setText(QCoreApplication::translate("MainWindow", "UDP\346\211\223\345\274\200", nullptr));
-        pBtn_UDPClose->setText(QCoreApplication::translate("MainWindow", "UDP\345\205\263\351\227\255", nullptr));
-        groupBox_selfMsg->setTitle(QCoreApplication::translate("MainWindow", "\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257(HEX)", nullptr));
-        pBtn_selfDefineMsg->setText(QCoreApplication::translate("MainWindow", "\345\217\221\351\200\201\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257", nullptr));
-        menuTool->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
-        menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
-        menuAbout->setTitle(QCoreApplication::translate("MainWindow", "About", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        gBx_Control->setTitle(QApplication::translate("MainWindow", "\346\234\254\345\234\260\347\275\221\347\273\234\350\256\276\347\275\256", nullptr));
+        label->setText(QApplication::translate("MainWindow", "\346\234\254\345\234\260\347\253\257\345\217\243\357\274\232", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "\346\234\254\345\234\260IP\357\274\232", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "\350\277\234\347\250\213\347\275\221\347\273\234\350\256\276\347\275\256", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "\350\277\234\347\250\213\347\253\257\345\217\243\357\274\232", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "\350\277\234\347\250\213IP\357\274\232", nullptr));
+        groupBox_8->setTitle(QApplication::translate("MainWindow", "\344\272\244\344\272\222\346\266\210\346\201\257", nullptr));
+        groupBox_4->setTitle(QApplication::translate("MainWindow", "LED\347\201\257\346\216\247\345\210\266", nullptr));
+        pBtn_ledClose->setText(QApplication::translate("MainWindow", "\347\201\257\345\205\263", nullptr));
+        pBtn_ledMotorSelect->setText(QApplication::translate("MainWindow", "\350\275\254\347\233\230\351\200\211\347\201\257", nullptr));
+        pBtn_ledOpen->setText(QApplication::translate("MainWindow", "\347\201\257\345\274\200", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "LED\347\274\226\345\217\267\357\274\232", nullptr));
+        pBtn_turnMotorReset->setText(QApplication::translate("MainWindow", "\350\275\254\347\233\230\345\244\215\344\275\215", nullptr));
+        groupBox_7->setTitle(QApplication::translate("MainWindow", "\346\265\213\350\257\225", nullptr));
+        pBtn_WBCTest->setText(QApplication::translate("MainWindow", "WBC\346\265\213\350\257\225", nullptr));
+        pBtn_RBCPLT_Test->setText(QApplication::translate("MainWindow", "RBC_PLT\346\265\213\350\257\225", nullptr));
+        pBtn_HGBTest->setText(QApplication::translate("MainWindow", "HGB\346\265\213\350\257\225", nullptr));
+        pBtn_CRPTest->setText(QApplication::translate("MainWindow", "CRP\346\265\213\350\257\225", nullptr));
+        pBtn_setHGBMode->setText(QApplication::translate("MainWindow", "HGB\346\265\213\350\257\225\346\250\241\345\274\217", nullptr));
+        pBtn_setCRPMode->setText(QApplication::translate("MainWindow", "CRP\346\250\241\345\274\217\346\250\241\345\274\217", nullptr));
+        pBtn_backGroundCRP->setText(QApplication::translate("MainWindow", "CRP\346\234\254\345\272\225\346\265\213\350\257\225", nullptr));
+        pBtn_backGroundHGB->setText(QApplication::translate("MainWindow", "HGB\346\234\254\345\272\225\346\265\213\350\257\225", nullptr));
+        pBtn_getSanSheVoltage->setText(QApplication::translate("MainWindow", "\346\225\243\345\260\204\347\224\265\345\216\213\345\200\274", nullptr));
+        pBtn_getTouSheVoltage->setText(QApplication::translate("MainWindow", "\351\200\217\350\247\206\347\224\265\345\216\213\345\200\274", nullptr));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "\350\256\276\345\244\207\350\207\252\346\243\200", nullptr));
+        pBtn_airValveSelfCheck->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\350\207\252\346\243\200", nullptr));
+        pBtn_liquidValveSelfCheck->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\350\207\252\346\243\200", nullptr));
+        pBtn_motorOutSelfCheck->setText(QApplication::translate("MainWindow", "\345\207\272\344\273\223\350\207\252\346\243\200", nullptr));
+        pBtn_motorInSelfCheck->setText(QApplication::translate("MainWindow", "\350\277\233\344\273\223\350\207\252\346\243\200", nullptr));
+        pBtn_buildPressSelfCheck->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\350\207\252\346\243\200", nullptr));
+        pBtn_airLightSelfCheck->setText(QApplication::translate("MainWindow", "\345\257\206\351\227\255\346\200\247\350\207\252\346\243\200", nullptr));
+        pBtn_pumpSelfCheck->setText(QApplication::translate("MainWindow", "\346\263\265\350\207\252\346\243\200", nullptr));
+        pBtn_currentSelfCheck->setText(QApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\207\252\346\243\200", nullptr));
+        pBtn_mixingMotorSelfCheck->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
+        pBtn_turnMotorSelfCheck->setText(QApplication::translate("MainWindow", "\350\275\254\347\233\230\347\224\265\346\234\272\350\207\252\346\243\200", nullptr));
+        groupBox_6->setTitle(QApplication::translate("MainWindow", "\347\224\265\346\234\272\351\230\200\346\216\247\345\210\266", nullptr));
+        pBtn_mainMotorIn->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\350\277\233\344\273\223", nullptr));
+        pBtn_mainMotorOut->setText(QApplication::translate("MainWindow", "\344\270\273\347\224\265\346\234\272\345\207\272\344\273\223", nullptr));
+        pBtn_fixMotorClose->setText(QApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\345\244\271\347\264\247", nullptr));
+        pBtn_liquidValveOpen->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\274\200", nullptr));
+        pBtn_airValveOpen->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\274\200", nullptr));
+        pBtn_airValveClose->setText(QApplication::translate("MainWindow", "\345\273\272\345\216\213\351\230\200\345\205\263", nullptr));
+        pBtn_fixMotorOpen->setText(QApplication::translate("MainWindow", "\345\233\272\345\256\232\347\224\265\346\234\272\346\235\276\345\274\200", nullptr));
+        pBtn_cangOut->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\345\207\272\344\273\223", nullptr));
+        pBtn_liquidValveClose->setText(QApplication::translate("MainWindow", "\345\220\270\346\266\262\351\230\200\345\205\263", nullptr));
+        pBtn_cangIn->setText(QApplication::translate("MainWindow", "\350\256\241\346\225\260\344\273\223\350\277\233\344\273\223", nullptr));
+        pBtn_pumpOpen->setText(QApplication::translate("MainWindow", "\346\263\265\345\274\200", nullptr));
+        pBtn_pumpClose->setText(QApplication::translate("MainWindow", "\346\263\265\345\205\263", nullptr));
+        pBtn_mixingMotorOpen->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\274\200", nullptr));
+        pBtn_mixingMotorClose->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\205\263", nullptr));
+        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Ctrol), QApplication::translate("MainWindow", "   \346\216\247\345\210\266   ", nullptr));
+        groupBox_11->setTitle(QApplication::translate("MainWindow", "\347\212\266\346\200\201\350\216\267\345\217\226", nullptr));
+        pBtn_getPressValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\260\224\345\216\213\345\200\274", nullptr));
+        pBtn_getMicroSwitch->setText(QApplication::translate("MainWindow", "\345\276\256\345\212\250\345\274\200\345\205\263\347\212\266\346\200\201", nullptr));
+        pBtn_getElectrol->setText(QApplication::translate("MainWindow", "\345\256\232\351\207\217\347\224\265\346\236\201\347\212\266\346\200\201\345\222\214\347\224\265\345\216\213", nullptr));
+        pBtn_getVersion->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\350\275\257\344\273\266\347\211\210\346\234\254", nullptr));
+        pBtn_getXKVoltage->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\260\217\345\255\224\347\224\265\345\216\213", nullptr));
+        pBtn_getOC->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\205\211\350\200\246\347\212\266\346\200\201", nullptr));
+        pBt_getTemp->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\270\251\345\272\246", nullptr));
+        pBtn_getCurrentVoltage->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\201\222\346\265\201\346\272\220\347\224\265\345\216\213", nullptr));
+        pBtn_getBioTestMode->setText(QApplication::translate("MainWindow", "\350\216\267\345\275\223\345\211\215\347\224\237\345\214\226\346\250\241\345\274\217", nullptr));
+        groupBox_9->setTitle(QApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
+        pBtn_getPressAddValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
+        pBtn_setPressAddValue->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\345\216\213\345\212\233\350\241\245\345\201\277\345\200\274", nullptr));
+        groupBox_14->setTitle(QApplication::translate("MainWindow", "\346\225\260\345\255\227\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "\351\200\211\346\213\251\347\224\265\344\275\215\345\231\250\347\274\226\345\217\267\357\274\232", nullptr));
+        pBtn_setDRegister->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        pBtn_getDRegister->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\347\224\265\344\275\215\345\231\250\345\200\274", nullptr));
+        label_7->setText(QApplication::translate("MainWindow", "\350\276\223\345\205\245\347\224\265\344\275\215\345\231\250\345\200\274\357\274\232", nullptr));
+        groupBox_10->setTitle(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277", nullptr));
+        label_9->setText(QApplication::translate("MainWindow", "\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274\357\274\232", nullptr));
+        pBtn_getOutInStepAddValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
+        pBtn_setOutInStepAddValue->setText(QApplication::translate("MainWindow", "\350\256\276\347\275\256\350\277\233\345\207\272\344\273\223\350\241\245\345\201\277\345\200\274", nullptr));
+        groupBox_13->setTitle(QApplication::translate("MainWindow", "\346\263\265\346\216\247\345\210\266", nullptr));
+        pBtn_setPumpSpeed->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\350\256\276\347\275\256", nullptr));
+        pBtn_getPumpSpeed->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\263\265\351\200\237", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "\346\263\265\351\200\237\357\274\232", nullptr));
+        groupBox_15->setTitle(QApplication::translate("MainWindow", "\345\205\211\350\267\257\346\201\222\346\265\201\346\272\220\350\260\203\350\212\202", nullptr));
+        pBtn_setCurrentLightPath->setText(QApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\256\276\347\275\256", nullptr));
+        label_11->setText(QApplication::translate("MainWindow", "\350\276\223\345\205\245\346\201\222\346\265\201\346\272\220\345\244\247\345\260\217\357\274\232", nullptr));
+        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Pameter), QApplication::translate("MainWindow", "   \345\217\202\346\225\260   ", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget_Ctrol), QApplication::translate("MainWindow", "\345\244\226\350\256\276\346\216\247\345\210\266\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_WBC), QApplication::translate("MainWindow", "WBC\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_RBCPLT), QApplication::translate("MainWindow", "RBC_PLT\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_bioTest), QApplication::translate("MainWindow", "\347\224\237\345\214\226\347\225\214\351\235\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_mcuUpdate), QApplication::translate("MainWindow", "MCU\345\215\207\347\272\247", nullptr));
+        pBtn_UDPOpen->setText(QApplication::translate("MainWindow", "UDP\346\211\223\345\274\200", nullptr));
+        pBtn_UDPClose->setText(QApplication::translate("MainWindow", "UDP\345\205\263\351\227\255", nullptr));
+        groupBox_selfMsg->setTitle(QApplication::translate("MainWindow", "\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257(HEX)", nullptr));
+        pBtn_selfDefineMsg->setText(QApplication::translate("MainWindow", "\345\217\221\351\200\201\350\207\252\345\256\232\344\271\211\346\266\210\346\201\257", nullptr));
+        menuTool->setTitle(QApplication::translate("MainWindow", "File", nullptr));
+        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", nullptr));
+        menuAbout->setTitle(QApplication::translate("MainWindow", "About", nullptr));
     } // retranslateUi
 
 };
