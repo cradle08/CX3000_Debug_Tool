@@ -151,9 +151,9 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>500</x>
+        <x>510</x>
         <y>10</y>
-        <width>351</width>
+        <width>341</width>
         <height>371</height>
        </rect>
       </property>
@@ -181,7 +181,7 @@
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>481</width>
+        <width>491</width>
         <height>381</height>
        </rect>
       </property>
@@ -257,7 +257,7 @@
          <rect>
           <x>380</x>
           <y>0</y>
-          <width>95</width>
+          <width>101</width>
           <height>351</height>
          </rect>
         </property>
@@ -435,21 +435,21 @@
          <string>电机阀控制</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_10">
-         <item row="1" column="0">
+         <item row="2" column="0">
           <widget class="QPushButton" name="pBtn_mainMotorIn">
            <property name="text">
             <string>主电机进仓</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="2" column="1">
           <widget class="QPushButton" name="pBtn_mainMotorOut">
            <property name="text">
             <string>主电机出仓</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0">
           <widget class="QPushButton" name="pBtn_fixMotorClose">
            <property name="text">
             <string>固定电机夹紧</string>
@@ -460,34 +460,6 @@
           <widget class="QPushButton" name="pBtn_liquidValveOpen">
            <property name="text">
             <string>吸液阀开</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="pBtn_liquidValveClose">
-           <property name="text">
-            <string>吸液阀关</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="pBtn_cangIn">
-           <property name="text">
-            <string>计数仓进仓</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="pBtn_pumpOpen">
-           <property name="text">
-            <string>泵开</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="3">
-          <widget class="QPushButton" name="pBtn_pumpClose">
-           <property name="text">
-            <string>泵关</string>
            </property>
           </widget>
          </item>
@@ -505,17 +477,45 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="4" column="1">
+          <widget class="QPushButton" name="pBtn_fixMotorOpen">
+           <property name="text">
+            <string>固定电机松开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
           <widget class="QPushButton" name="pBtn_cangOut">
            <property name="text">
             <string>计数仓出仓</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QPushButton" name="pBtn_fixMotorOpen">
+         <item row="0" column="1">
+          <widget class="QPushButton" name="pBtn_liquidValveClose">
            <property name="text">
-            <string>固定电机松开</string>
+            <string>吸液阀关</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pBtn_cangIn">
+           <property name="text">
+            <string>计数仓进仓</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pBtn_pumpOpen">
+           <property name="text">
+            <string>泵开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="pBtn_pumpClose">
+           <property name="text">
+            <string>泵关</string>
            </property>
           </widget>
          </item>
