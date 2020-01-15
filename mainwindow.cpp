@@ -66,6 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Config_Init();
     // led combobix
     LED_Combobox_Init();
+    DRegister_Combobox_Init();
     // wbc tab menu init
     CreatCharts();
 }
@@ -102,6 +103,20 @@ void MainWindow::LED_Combobox_Init()
    }
    configIni->endGroup();
 }
+
+void MainWindow::DRegister_Combobox_Init()
+{
+   configIni->beginGroup("DREGISTER");
+   for(quint16 i = 0; i < 6; i++)
+   {
+        QString str = configIni->value(tr("DREGISTER%1").arg(i)).toString();
+        ui->comboBox_DRegister->addItem(str);
+   }
+   configIni->endGroup();
+}
+
+
+
 //
 void MainWindow::Send_TestCmd()
 {
@@ -867,12 +882,67 @@ void MainWindow::on_pBtn_ledMotorSelect_clicked()
 void MainWindow::on_pBtn_getDRegister_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn);
-    QString str = pBtn->text().append(":").append(msg);
-    ui->textEdit_backMsgCtrolMenu->append(str);
+    QString str = pBtn->objectName();
+    str = str.mid(str.indexOf("_") + 1);
+    qDebug() << str;
+    configIni->beginGroup("Protocol");
+    QString msg = configIni->value(str).toString();
+    configIni->endGroup();
+
+    int index =  ui->comboBox_DRegister->currentIndex();
+    qDebug()<<str <<"=" << msg << " index:"<<index;
+
+    QString strTemp = QString::number(index);
+    strTemp.insert(0, '0');
+    msg.replace(16, 2, strTemp);
+    qDebug() <<"msg="<<msg;
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
+    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
+
+    QString strr = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(strr);
 }
 
 void MainWindow::on_pBtn_setDRegister_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    QString str = pBtn->objectName();
+    str = str.mid(str.indexOf("_") + 1);
+    qDebug() << str;
+    configIni->beginGroup("Protocol");
+    QString msg = configIni->value(str).toString();
+    configIni->endGroup();
+
+    int index =  ui->comboBox_DRegister->currentIndex();
+    qDebug()<<str <<"=" << msg << " index:"<<index;
+
+    QString strTemp = QString::number(index);
+    strTemp.insert(0, '0');
+    msg.replace(16, 2, strTemp);
+    qDebug() <<"msg="<<msg;
+
+    strTemp.clear();
+    strTemp.sprintf("%02X",  ui->spinBox_DRegister->value());
+    msg.replace(18, 2, strTemp);
+    qDebug() <<"msg="<<msg;
+
+    QByteArray data = QByteArray::fromHex(msg.toUtf8());
+    socketUdp->writeDatagram(data, stRemoteIP, nRemotePort);
+
+    QString strr = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(strr);
+}
+
+void MainWindow::on_pBtn_turnMotorOpen_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    QString msg = Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(str);
+
+}
+
+void MainWindow::on_pBtn_turnMotorClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
     QString msg = Button_Send_Msg_Handler(pBtn);
@@ -880,9 +950,26 @@ void MainWindow::on_pBtn_setDRegister_clicked()
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
 
+void MainWindow::on_pBtn_mixingMotorOpen_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    QString msg = Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(str);
+}
 
+void MainWindow::on_pBtn_mixingMotorClose_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    QString msg = Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(str);
+}
 
-
-
-
-
+void MainWindow::on_pBtn_turnMotorReset_clicked()
+{
+    QPushButton *pBtn = ((QPushButton*)sender());
+    QString msg = Button_Send_Msg_Handler(pBtn);
+    QString str = pBtn->text().append(":").append(msg);
+    ui->textEdit_backMsgCtrolMenu->append(str);
+}

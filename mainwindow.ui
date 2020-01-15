@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1071</width>
-    <height>469</height>
+    <width>1060</width>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -151,9 +151,9 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>500</x>
         <y>10</y>
-        <width>471</width>
+        <width>351</width>
         <height>371</height>
        </rect>
       </property>
@@ -181,7 +181,7 @@
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>371</width>
+        <width>481</width>
         <height>381</height>
        </rect>
       </property>
@@ -190,38 +190,21 @@
       </property>
       <widget class="QWidget" name="tab_Ctrol">
        <attribute name="title">
-        <string>  控制  </string>
+        <string>   控制   </string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_4">
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>112</y>
+          <y>160</y>
           <width>131</width>
-          <height>171</height>
+          <height>191</height>
          </rect>
         </property>
         <property name="title">
          <string>LED灯控制</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>LED编号：</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QComboBox" name="comboBox_ledNum"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="pBtn_ledOpen">
-           <property name="text">
-            <string>灯开</string>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="0">
           <widget class="QPushButton" name="pBtn_ledClose">
            <property name="text">
@@ -236,74 +219,119 @@
            </property>
           </widget>
          </item>
+         <item row="1" column="0">
+          <widget class="QComboBox" name="comboBox_ledNum">
+           <property name="focusPolicy">
+            <enum>Qt::WheelFocus</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="pBtn_ledOpen">
+           <property name="text">
+            <string>灯开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>LED编号：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QPushButton" name="pBtn_turnMotorReset">
+           <property name="contextMenuPolicy">
+            <enum>Qt::PreventContextMenu</enum>
+           </property>
+           <property name="text">
+            <string>转盘复位</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QGroupBox" name="groupBox_7">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>282</y>
-          <width>361</width>
-          <height>81</height>
+          <x>380</x>
+          <y>0</y>
+          <width>95</width>
+          <height>351</height>
          </rect>
         </property>
         <property name="title">
          <string>测试</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="3">
-          <widget class="QPushButton" name="pBtn_CRPTest">
-           <property name="text">
-            <string>CRP测试</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="pBtn_setCRPMode">
-           <property name="text">
-            <string>CRP模式模式</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="pBtn_backGroundCRP">
-           <property name="text">
-            <string>CRP本底测试</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="pBtn_HGBTest">
-           <property name="text">
-            <string>HGB测试</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="pBtn_RBCPLT_Test">
-           <property name="text">
-            <string>RBC_PLT测试</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="pBtn_backGroundHGB">
-           <property name="text">
-            <string>HGB本底测试</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
           <widget class="QPushButton" name="pBtn_WBCTest">
            <property name="text">
             <string>WBC测试</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="3">
+         <item>
+          <widget class="QPushButton" name="pBtn_RBCPLT_Test">
+           <property name="text">
+            <string>RBC_PLT测试</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_HGBTest">
+           <property name="text">
+            <string>HGB测试</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_CRPTest">
+           <property name="text">
+            <string>CRP测试</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="pBtn_setHGBMode">
            <property name="text">
             <string>HGB测试模式</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_setCRPMode">
+           <property name="text">
+            <string>CRP模式模式</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_backGroundCRP">
+           <property name="text">
+            <string>CRP本底测试</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_backGroundHGB">
+           <property name="text">
+            <string>HGB本底测试</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_getSanSheVoltage">
+           <property name="text">
+            <string>散射电压值</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pBtn_getTouSheVoltage">
+           <property name="text">
+            <string>透视电压值</string>
            </property>
           </widget>
          </item>
@@ -313,9 +341,9 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>112</y>
-          <width>221</width>
-          <height>171</height>
+          <y>160</y>
+          <width>231</width>
+          <height>191</height>
          </rect>
         </property>
         <property name="title">
@@ -399,46 +427,32 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>361</width>
-          <height>111</height>
+          <width>371</width>
+          <height>151</height>
          </rect>
         </property>
         <property name="title">
          <string>电机阀控制</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_10">
-         <item row="1" column="3">
-          <widget class="QPushButton" name="pBtn_cangOut">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pBtn_mainMotorIn">
            <property name="text">
-            <string>计数仓出仓</string>
+            <string>主电机进仓</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
+         <item row="1" column="1">
+          <widget class="QPushButton" name="pBtn_mainMotorOut">
+           <property name="text">
+            <string>主电机出仓</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
           <widget class="QPushButton" name="pBtn_fixMotorClose">
            <property name="text">
             <string>固定电机夹紧</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="pBtn_fixMotorOpen">
-           <property name="text">
-            <string>固定电机松开</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="pBtn_pumpOpen">
-           <property name="text">
-            <string>泵开</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="3">
-          <widget class="QPushButton" name="pBtn_pumpClose">
-           <property name="text">
-            <string>泵关</string>
            </property>
           </widget>
          </item>
@@ -456,6 +470,27 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="pBtn_cangIn">
+           <property name="text">
+            <string>计数仓进仓</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pBtn_pumpOpen">
+           <property name="text">
+            <string>泵开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="pBtn_pumpClose">
+           <property name="text">
+            <string>泵关</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="2">
           <widget class="QPushButton" name="pBtn_airValveOpen">
            <property name="text">
@@ -470,24 +505,31 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="pBtn_mainMotorIn">
+         <item row="2" column="1">
+          <widget class="QPushButton" name="pBtn_cangOut">
            <property name="text">
-            <string>主电机进仓</string>
+            <string>计数仓出仓</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="pBtn_mainMotorOut">
+         <item row="3" column="1">
+          <widget class="QPushButton" name="pBtn_fixMotorOpen">
            <property name="text">
-            <string>主电机出仓</string>
+            <string>固定电机松开</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="pBtn_cangIn">
+         <item row="2" column="2">
+          <widget class="QPushButton" name="pBtn_mixingMotorOpen">
            <property name="text">
-            <string>计数仓进仓</string>
+            <string>搅拌电机开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="pBtn_mixingMotorClose">
+           <property name="text">
+            <string>搅拌电机关</string>
            </property>
           </widget>
          </item>
@@ -496,7 +538,7 @@
       </widget>
       <widget class="QWidget" name="tab_Pameter">
        <attribute name="title">
-        <string>  参数  </string>
+        <string>   参数   </string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_11">
         <property name="geometry">
@@ -504,13 +546,41 @@
           <x>0</x>
           <y>140</y>
           <width>241</width>
-          <height>201</height>
+          <height>211</height>
          </rect>
         </property>
         <property name="title">
          <string>状态获取</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
+         <item row="2" column="2">
+          <widget class="QPushButton" name="pBtn_getPressValue">
+           <property name="text">
+            <string>获取气压值</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="pBtn_getMicroSwitch">
+           <property name="text">
+            <string>微动开关状态</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="pBtn_getElectrol">
+           <property name="text">
+            <string>定量电极状态和电压</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="pBtn_getVersion">
+           <property name="text">
+            <string>获取软件版本</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="0">
           <widget class="QPushButton" name="pBtn_getXKVoltage">
            <property name="text">
@@ -525,21 +595,7 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
-          <widget class="QPushButton" name="pBtn_getPressValue">
-           <property name="text">
-            <string>获取气压值</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="pBtn_getSanSheVoltage">
-           <property name="text">
-            <string>散射电压值</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
+         <item row="3" column="0">
           <widget class="QPushButton" name="pBt_getTemp">
            <property name="text">
             <string>获取温度</string>
@@ -553,38 +609,10 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="pBtn_getMicroSwitch">
-           <property name="text">
-            <string>微动开关状态</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QPushButton" name="pBtn_getVersion">
-           <property name="text">
-            <string>获取软件版本</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="pBtn_getTouSheVoltage">
-           <property name="text">
-            <string>透视电压值</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
+         <item row="4" column="0">
           <widget class="QPushButton" name="pBtn_getBioTestMode">
            <property name="text">
             <string>获当前生化模式</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QPushButton" name="pBtn_getElectrol">
-           <property name="text">
-            <string>定量电极状态和电压</string>
            </property>
           </widget>
          </item>
@@ -635,7 +663,7 @@
           <x>250</x>
           <y>140</y>
           <width>111</width>
-          <height>201</height>
+          <height>211</height>
          </rect>
         </property>
         <property name="title">
@@ -674,7 +702,14 @@
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QSpinBox" name="spinBox_DRegister"/>
+          <widget class="QSpinBox" name="spinBox_DRegister">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="value">
+            <number>50</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -713,7 +748,11 @@
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QSpinBox" name="spinBox_outinStepAddValue"/>
+          <widget class="QSpinBox" name="spinBox_outinStepAddValue">
+           <property name="maximum">
+            <number>65535</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -752,7 +791,14 @@
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QSpinBox" name="spinBox_pumpSpeed"/>
+          <widget class="QSpinBox" name="spinBox_pumpSpeed">
+           <property name="maximum">
+            <number>25000</number>
+           </property>
+           <property name="value">
+            <number>12500</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -854,7 +900,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1071</width>
+     <width>1060</width>
      <height>23</height>
     </rect>
    </property>

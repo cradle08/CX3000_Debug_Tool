@@ -39,6 +39,7 @@ public:
         EN_TAB_INDEX_UPDATE  = 4,
     };
     void LED_Combobox_Init();
+    void DRegister_Combobox_Init();
     void Config_Init();
     void CreatCharts();
 
@@ -167,6 +168,16 @@ private slots:
     void on_pBtn_getDRegister_clicked();
 
     void on_pBtn_setDRegister_clicked();
+
+    void on_pBtn_turnMotorOpen_clicked();
+
+    void on_pBtn_turnMotorClose_clicked();
+
+    void on_pBtn_mixingMotorOpen_clicked();
+
+    void on_pBtn_mixingMotorClose_clicked();
+
+    void on_pBtn_turnMotorReset_clicked();
 
 private:
     Ui::MainWindow *ui;
