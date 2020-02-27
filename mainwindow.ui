@@ -176,7 +176,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTabWidget" name="tabWidget_Status">
+     <widget class="QTabWidget" name="tabWidget_Device">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -858,6 +858,65 @@
      <attribute name="title">
       <string>生化界面</string>
      </attribute>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>841</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <widget class="QComboBox" name="comboBox">
+       <property name="geometry">
+        <rect>
+         <x>107</x>
+         <y>282</y>
+         <width>69</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>182</x>
+         <y>281</y>
+         <width>120</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择测试的生化项目：</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>281</y>
+         <width>80</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>执行生化测试</string>
+       </property>
+      </widget>
+      <widget class="QSlider" name="horizontalSlider">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>250</y>
+         <width>831</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_mcuUpdate">
      <attribute name="title">

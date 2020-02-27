@@ -27,15 +27,23 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        qhandledatamsgthread.cpp \
+        qhandlestatusmsgthread.cpp \
+        qifudp.cpp \
+        qmsgqueue.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        qhandledatamsgthread.h \
+        qhandlestatusmsgthread.h \
+        qifudp.h \
+        qmsgqueue.h
 
 FORMS += \
         mainwindow.ui
 
-RC_ICONS = 2562563.ico
+RC_ICONS = blood_96px.ico
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

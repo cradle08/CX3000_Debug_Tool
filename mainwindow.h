@@ -1,6 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "qifudp.h"
+#include "qhandledatamsgthread.h"
+#include "qhandlestatusmsgthread.h"
+#include "qmsgqueue.h"
+
 #include <QMainWindow>
 #include <QUdpSocket>
 #include <QLabel>
@@ -9,6 +14,7 @@
 #include <QByteArray>
 #include <queue>
 #include <QtCharts>
+#include <QThread>
 
 namespace Ui {
 class MainWindow;
@@ -21,27 +27,46 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-signals:
-
-public slots:
-    void Recv_Msg_Handler();
-    void Send_TestCmd();
-    QString Button_Send_Msg_Handler(QPushButton *pBtn);
-
-public:
+    // tab wiget number
     enum {
-        EN_TAB_INDEX_CTROL   = 0,
+        EN_TAB_INDEX_DEVICE  = 0,
         EN_TAB_INDEX_WBC     = 1,
         EN_TAB_INDEX_RBC_PLT = 2,
         EN_TAB_INDEX_BIO     = 3,
         EN_TAB_INDEX_UPDATE  = 4,
+        EN_TAB_INDEX_END
     };
+
+    enum EN_PROTOCOL_TYPE{
+        EN_PROTOCOL_Control       = 0,
+        EN_PROTOCOL_Test          = 1,
+        EN_PROTOCOL_ParamSet      = 2,
+        EN_PROTOCOL_ParamGet      = 3,
+        EN_PROTOCOL_CheckAndAging = 4,
+        EN_PROTOCOL_Update        = 5,
+        EN_PROTOCOL_Others        = 6,
+        EN_PROTOCOL_END
+    };
+
+public:
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+
+signals:
+
+public slots:
+    void Send_TestCmd();
+    QString Button_Send_Msg_Handler(QPushButton *pBtn, EN_PROTOCOL_TYPE enProtocolType);
+
+
+public:
+    void Set_TabWight_Enable(bool bFlag);
     void LED_Combobox_Init();
     void DRegister_Combobox_Init();
     void Config_Init();
-    void CreatCharts();
+    void Thread_init();
+    //void CreatCharts();
+
 
 
 private slots:
@@ -83,7 +108,7 @@ private slots:
 
     void on_pBtn_pumpClose_clicked();
 
-    void on_pBtn_pumpSpeedSet_clicked();
+    //void on_pBtn_setPumpSpeed_clicked();
 
     void on_pBtn_WBCTest_clicked();
 
@@ -123,7 +148,7 @@ private slots:
 
     void on_pBtn_fixMotorOpen_clicked();
 
-    void on_pBtn_ledSelect_clicked();
+   // void on_pBtn_ledSelect_clicked();
 
     void on_pBtn_mixingMotorSelfCheck_clicked();
 
@@ -179,19 +204,39 @@ private slots:
 
     void on_pBtn_turnMotorReset_clicked();
 
+
+
+public:
+    QIfUdp* Get_IfUdp();
+    QMsgQueue* Get_MsgQueue();
+    QHandleDataMsgThread* Get_HandleDataMsgThread();
+    QHandleStatusMsgThread* Get_HandleStatusMsgThread();
+
+
 private:
     Ui::MainWindow *ui;
-    QUdpSocket *socketUdp;
-    QLabel *label_barStatus;
-    QHostAddress stLocalIP, stRemoteIP;
-    unsigned short nLocalPort, nRemotePort;
-    QSettings *configIni;
-    //QQueue<int> stQueue;
-    // QQueue<int> queue;
-    //Queue<int> DataBuffer;
-     QList<QByteArray*> stList;
-    int nNum;
+    int m_nNum;
+    QLabel *m_label_barStatus;
+    QSettings *m_pstConfigIni;
+
+    //QHostAddress stLocalIP, stRemoteIP;
+    //unsigned short nLocalPort, nRemotePort;
+
+public:
+    QMsgQueue *m_pstMsgQueue;
+    QIfUdp *m_pstIfUdp;
+    QHandleDataMsgThread *m_pstHandleDataMsgThread;
+    QHandleStatusMsgThread *m_pstHandleStatusMsgThread;
+
 
 };
 
 #endif // MAINWINDOW_H
+
+
+
+
+
+
+
+

@@ -21,6 +21,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -51,7 +52,7 @@ public:
     QGridLayout *gridLayout_6;
     QTextEdit *textEdit_backMsgCtrolMenu;
     QTextEdit *textEdit_3;
-    QTabWidget *tabWidget_Status;
+    QTabWidget *tabWidget_Device;
     QWidget *tab_Ctrol;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_11;
@@ -147,6 +148,11 @@ public:
     QWidget *tab_WBC;
     QWidget *tab_RBCPLT;
     QWidget *tab_bioTest;
+    QWidget *widget;
+    QComboBox *comboBox;
+    QLabel *label_12;
+    QPushButton *pushButton;
+    QSlider *horizontalSlider;
     QWidget *tab_mcuUpdate;
     QPushButton *pBtn_UDPOpen;
     QPushButton *pBtn_UDPClose;
@@ -217,9 +223,9 @@ public:
         textEdit_3 = new QTextEdit(widget_Ctrol);
         textEdit_3->setObjectName(QString::fromUtf8("textEdit_3"));
         textEdit_3->setGeometry(QRect(-230, 452, 311, 29));
-        tabWidget_Status = new QTabWidget(widget_Ctrol);
-        tabWidget_Status->setObjectName(QString::fromUtf8("tabWidget_Status"));
-        tabWidget_Status->setGeometry(QRect(10, 0, 491, 381));
+        tabWidget_Device = new QTabWidget(widget_Ctrol);
+        tabWidget_Device->setObjectName(QString::fromUtf8("tabWidget_Device"));
+        tabWidget_Device->setGeometry(QRect(10, 0, 491, 381));
         tab_Ctrol = new QWidget();
         tab_Ctrol->setObjectName(QString::fromUtf8("tab_Ctrol"));
         groupBox_4 = new QGroupBox(tab_Ctrol);
@@ -452,7 +458,7 @@ public:
 
         gridLayout_10->addWidget(pBtn_mixingMotorClose, 2, 3, 1, 1);
 
-        tabWidget_Status->addTab(tab_Ctrol, QString());
+        tabWidget_Device->addTab(tab_Ctrol, QString());
         tab_Pameter = new QWidget();
         tab_Pameter->setObjectName(QString::fromUtf8("tab_Pameter"));
         groupBox_11 = new QGroupBox(tab_Pameter);
@@ -654,7 +660,7 @@ public:
 
         gridLayout_8->addWidget(spinBox_currentLightPath, 1, 0, 1, 1);
 
-        tabWidget_Status->addTab(tab_Pameter, QString());
+        tabWidget_Device->addTab(tab_Pameter, QString());
         tabWidget->addTab(widget_Ctrol, QString());
         tab_WBC = new QWidget();
         tab_WBC->setObjectName(QString::fromUtf8("tab_WBC"));
@@ -664,6 +670,22 @@ public:
         tabWidget->addTab(tab_RBCPLT, QString());
         tab_bioTest = new QWidget();
         tab_bioTest->setObjectName(QString::fromUtf8("tab_bioTest"));
+        widget = new QWidget(tab_bioTest);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(10, 10, 841, 361));
+        comboBox = new QComboBox(widget);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(107, 282, 69, 20));
+        label_12 = new QLabel(widget);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setGeometry(QRect(182, 281, 120, 16));
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(21, 281, 80, 23));
+        horizontalSlider = new QSlider(widget);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setGeometry(QRect(0, 250, 831, 20));
+        horizontalSlider->setOrientation(Qt::Horizontal);
         tabWidget->addTab(tab_bioTest, QString());
         tab_mcuUpdate = new QWidget();
         tab_mcuUpdate->setObjectName(QString::fromUtf8("tab_mcuUpdate"));
@@ -719,7 +741,7 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(0);
-        tabWidget_Status->setCurrentIndex(0);
+        tabWidget_Device->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -778,7 +800,7 @@ public:
         pBtn_pumpClose->setText(QApplication::translate("MainWindow", "\346\263\265\345\205\263", nullptr));
         pBtn_mixingMotorOpen->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\274\200", nullptr));
         pBtn_mixingMotorClose->setText(QApplication::translate("MainWindow", "\346\220\205\346\213\214\347\224\265\346\234\272\345\205\263", nullptr));
-        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Ctrol), QApplication::translate("MainWindow", "   \346\216\247\345\210\266   ", nullptr));
+        tabWidget_Device->setTabText(tabWidget_Device->indexOf(tab_Ctrol), QApplication::translate("MainWindow", "   \346\216\247\345\210\266   ", nullptr));
         groupBox_11->setTitle(QApplication::translate("MainWindow", "\347\212\266\346\200\201\350\216\267\345\217\226", nullptr));
         pBtn_getPressValue->setText(QApplication::translate("MainWindow", "\350\216\267\345\217\226\346\260\224\345\216\213\345\200\274", nullptr));
         pBtn_getMicroSwitch->setText(QApplication::translate("MainWindow", "\345\276\256\345\212\250\345\274\200\345\205\263\347\212\266\346\200\201", nullptr));
@@ -809,10 +831,12 @@ public:
         groupBox_15->setTitle(QApplication::translate("MainWindow", "\345\205\211\350\267\257\346\201\222\346\265\201\346\272\220\350\260\203\350\212\202", nullptr));
         pBtn_setCurrentLightPath->setText(QApplication::translate("MainWindow", "\346\201\222\346\265\201\346\272\220\350\256\276\347\275\256", nullptr));
         label_11->setText(QApplication::translate("MainWindow", "\350\276\223\345\205\245\346\201\222\346\265\201\346\272\220\345\244\247\345\260\217\357\274\232", nullptr));
-        tabWidget_Status->setTabText(tabWidget_Status->indexOf(tab_Pameter), QApplication::translate("MainWindow", "   \345\217\202\346\225\260   ", nullptr));
+        tabWidget_Device->setTabText(tabWidget_Device->indexOf(tab_Pameter), QApplication::translate("MainWindow", "   \345\217\202\346\225\260   ", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(widget_Ctrol), QApplication::translate("MainWindow", "\345\244\226\350\256\276\346\216\247\345\210\266\347\225\214\351\235\242", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_WBC), QApplication::translate("MainWindow", "WBC\347\225\214\351\235\242", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_RBCPLT), QApplication::translate("MainWindow", "RBC_PLT\347\225\214\351\235\242", nullptr));
+        label_12->setText(QApplication::translate("MainWindow", "\351\200\211\346\213\251\346\265\213\350\257\225\347\232\204\347\224\237\345\214\226\351\241\271\347\233\256\357\274\232", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "\346\211\247\350\241\214\347\224\237\345\214\226\346\265\213\350\257\225", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_bioTest), QApplication::translate("MainWindow", "\347\224\237\345\214\226\347\225\214\351\235\242", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_mcuUpdate), QApplication::translate("MainWindow", "MCU\345\215\207\347\272\247", nullptr));
         pBtn_UDPOpen->setText(QApplication::translate("MainWindow", "UDP\346\211\223\345\274\200", nullptr));
