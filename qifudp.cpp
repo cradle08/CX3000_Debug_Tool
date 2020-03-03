@@ -74,7 +74,8 @@ void QIfUdp::Recv_Msg_Handler()
         if(nLen > 0)
         {
             m_pstSocketUdp->readDatagram(pRecvData->data(), nLen, &stRecvAddr, &nRecvPort);
-            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort<<"Data:"<< pRecvData;
+            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort;
+            qDebug() << "IfUdp Recv Status Msg: " << *pRecvData;
         }else {
             qDebug() << "recv msg len <= 0";
             continue;
@@ -82,11 +83,12 @@ void QIfUdp::Recv_Msg_Handler()
         //
         if(pRecvData->at(3) == EN_MSG_TYPE_DATA) // status msg
         {
-           // stDataMsgQueue.enqueue(pRecvData);
+
+           m_pstMsgQueue->stDataMsgQueue.enqueue(pRecvData);
 
         }else if(pRecvData->at(3) == EN_MSG_TYPE_STATUS){ // data msg
 
-           // stStatusMsgQueue.enqueue(pRecvData);
+            m_pstMsgQueue->stStatusMsgQueue.enqueue(pRecvData);
         }else { // error msg
             qDebug() <<"Recv Error Msg: " << pRecvData->data();
         }

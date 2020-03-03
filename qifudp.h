@@ -21,6 +21,18 @@ enum {
 };
 
 
+enum EN_PROTOCOL_CMD_TYPE{
+    EN_PROTOCOL_CMD_Control       = 0,
+    EN_PROTOCOL_CMD_Test          = 1,
+    EN_PROTOCOL_CMD_ParamSet      = 2,
+    EN_PROTOCOL_CMD_ParamGet      = 3,
+    EN_PROTOCOL_CMD_CheckAndAging = 4,
+    EN_PROTOCOL_CMD_Update        = 5,
+    EN_PROTOCOL_CMD_Others        = 6,
+    EN_PROTOCOL_CMD_END
+};
+
+
 class QIfUdp : public QUdpSocket
 {
     Q_OBJECT;

@@ -16,9 +16,12 @@
 #include <QtCharts>
 #include <QThread>
 
+
+
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
+
 
 
 
@@ -37,17 +40,6 @@ public:
         EN_TAB_INDEX_END
     };
 
-    enum EN_PROTOCOL_TYPE{
-        EN_PROTOCOL_Control       = 0,
-        EN_PROTOCOL_Test          = 1,
-        EN_PROTOCOL_ParamSet      = 2,
-        EN_PROTOCOL_ParamGet      = 3,
-        EN_PROTOCOL_CheckAndAging = 4,
-        EN_PROTOCOL_Update        = 5,
-        EN_PROTOCOL_Others        = 6,
-        EN_PROTOCOL_END
-    };
-
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -56,7 +48,7 @@ signals:
 
 public slots:
     void Send_TestCmd();
-    QString Button_Send_Msg_Handler(QPushButton *pBtn, EN_PROTOCOL_TYPE enProtocolType);
+    QString Button_Send_Msg_Handler(QPushButton *pBtn, EN_PROTOCOL_CMD_TYPE enCmdType);
 
 
 public:

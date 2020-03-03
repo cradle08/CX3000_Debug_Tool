@@ -29,8 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("CX-Debug-Tools");
 
-    // thread
-    Thread_init();
+    //Config Init
+     Config_Init();
+
 
     // init localip combobox
     QList<QHostAddress> stAdrList;
@@ -64,14 +65,15 @@ MainWindow::MainWindow(QWidget *parent) :
     Set_TabWight_Enable(false);
     ui->pBtn_selfDefineMsg->setEnabled(false);
 
-   //Config Init
-    Config_Init();
+
     // led combobix
     LED_Combobox_Init();
     DRegister_Combobox_Init();
     // wbc tab menu init
     //CreatCharts();
 
+    // thread(must init after Config_int)
+    Thread_init();
 }
 
 
@@ -102,14 +104,23 @@ void MainWindow::Config_Init()
     m_pstConfigIni = new QSettings(tr("%1/config.ini").arg(strProjectPath), QSettings::IniFormat);
     //m_pstConfigIni.setIniCodec(QTextCodec::codecForName("UTF-8"));
     m_pstConfigIni->setIniCodec("UTF-8");
+
+    m_pstConfigIni->beginGroup("Control");
+    //strMsg = m_pstConfigIni->value(str).toString();
+    QStringList strList = m_pstConfigIni->allKeys();
+    qDebug() << "-----allKeys----:" << strList;
+
+    strList = m_pstConfigIni->childKeys();
+    m_pstConfigIni->endGroup();
+
 }
 
 void MainWindow::Thread_init()
 {
     m_pstMsgQueue = new QMsgQueue();
     m_pstIfUdp = new QIfUdp(m_pstMsgQueue);
-    m_pstHandleDataMsgThread = new QHandleDataMsgThread(m_pstMsgQueue);
-    m_pstHandleStatusMsgThread = new QHandleStatusMsgThread(m_pstMsgQueue);
+    m_pstHandleDataMsgThread = new QHandleDataMsgThread(m_pstMsgQueue, m_pstConfigIni, ui, true);
+    m_pstHandleStatusMsgThread = new QHandleStatusMsgThread(m_pstMsgQueue, m_pstConfigIni, ui, true);
 
     m_pstHandleDataMsgThread->start();
     m_pstHandleStatusMsgThread->start();
@@ -211,57 +222,57 @@ void MainWindow::CreatCharts()
 
 
 //----------------------Ctrol-------------------------------
-QString MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn, EN_PROTOCOL_TYPE enProtocolType)
+QString MainWindow::Button_Send_Msg_Handler(QPushButton *pBtn, EN_PROTOCOL_CMD_TYPE enCmdType)
 {
     //QPushButton btn = button;
     QString str = pBtn->objectName();
     QString strMsg;
 
     str = str.mid(str.indexOf("_") + 1);
-    switch (enProtocolType) {
-        case EN_PROTOCOL_Control:
+    switch (enCmdType) {
+        case EN_PROTOCOL_CMD_Control:
             {
                 m_pstConfigIni->beginGroup("Control");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_Test:
+        case EN_PROTOCOL_CMD_Test:
             {
                 m_pstConfigIni->beginGroup("Test");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_ParamSet:
+        case EN_PROTOCOL_CMD_ParamSet:
             {
                 m_pstConfigIni->beginGroup("ParamSet");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_ParamGet:
+        case EN_PROTOCOL_CMD_ParamGet:
             {
                 m_pstConfigIni->beginGroup("ParamGet");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_CheckAndAging:
+        case EN_PROTOCOL_CMD_CheckAndAging:
             {
                 m_pstConfigIni->beginGroup("CheckAndAging");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_Update:
+        case EN_PROTOCOL_CMD_Update:
             {
                 m_pstConfigIni->beginGroup("Update");
                 strMsg = m_pstConfigIni->value(str).toString();
                 m_pstConfigIni->endGroup();
             }
             break;
-        case EN_PROTOCOL_Others:
+        case EN_PROTOCOL_CMD_Others:
             {
                 m_pstConfigIni->beginGroup("Others");
                 strMsg = m_pstConfigIni->value(str).toString();
@@ -416,7 +427,7 @@ void MainWindow::on_pBtn_UDPClose_clicked()
 void MainWindow::on_pBtn_liquidValveClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -424,7 +435,7 @@ void MainWindow::on_pBtn_liquidValveClose_clicked()
 void MainWindow::on_pBtn_liquidValveOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -432,7 +443,7 @@ void MainWindow::on_pBtn_liquidValveOpen_clicked()
 void MainWindow::on_pBtn_airValveOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -440,7 +451,7 @@ void MainWindow::on_pBtn_airValveOpen_clicked()
 void MainWindow::on_pBtn_airValveClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -501,7 +512,7 @@ void MainWindow::on_pBtn_ledClose_clicked()
 void MainWindow::on_pBtn_mainMotorIn_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -509,7 +520,7 @@ void MainWindow::on_pBtn_mainMotorIn_clicked()
 void MainWindow::on_pBtn_mainMotorOut_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -517,7 +528,7 @@ void MainWindow::on_pBtn_mainMotorOut_clicked()
 void MainWindow::on_pBtn_cangIn_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -525,7 +536,7 @@ void MainWindow::on_pBtn_cangIn_clicked()
 void MainWindow::on_pBtn_cangOut_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -533,7 +544,7 @@ void MainWindow::on_pBtn_cangOut_clicked()
 void MainWindow::on_pBtn_pumpOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -541,7 +552,7 @@ void MainWindow::on_pBtn_pumpOpen_clicked()
 void MainWindow::on_pBtn_pumpClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -549,7 +560,7 @@ void MainWindow::on_pBtn_pumpClose_clicked()
 void MainWindow::on_pBtn_WBCTest_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -557,7 +568,7 @@ void MainWindow::on_pBtn_WBCTest_clicked()
 void MainWindow::on_pBtn_RBCPLT_Test_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -565,7 +576,7 @@ void MainWindow::on_pBtn_RBCPLT_Test_clicked()
 void MainWindow::on_pBtn_setHGBMode_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamSet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamSet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -573,7 +584,7 @@ void MainWindow::on_pBtn_setHGBMode_clicked()
 void MainWindow::on_pBtn_setCRPMode_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamSet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamSet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -581,7 +592,7 @@ void MainWindow::on_pBtn_setCRPMode_clicked()
 void MainWindow::on_pBtn_backGroundCRP_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -589,7 +600,7 @@ void MainWindow::on_pBtn_backGroundCRP_clicked()
 void MainWindow::on_pBtn_CRPTest_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -597,7 +608,7 @@ void MainWindow::on_pBtn_CRPTest_clicked()
 void MainWindow::on_pBtn_backGroundHGB_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -605,7 +616,7 @@ void MainWindow::on_pBtn_backGroundHGB_clicked()
 void MainWindow::on_pBtn_HGBTest_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Test);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Test);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -613,7 +624,7 @@ void MainWindow::on_pBtn_HGBTest_clicked()
 void MainWindow::on_pBtn_airValveSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -621,7 +632,7 @@ void MainWindow::on_pBtn_airValveSelfCheck_clicked()
 void MainWindow::on_pBtn_liquidValveSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -629,7 +640,7 @@ void MainWindow::on_pBtn_liquidValveSelfCheck_clicked()
 void MainWindow::on_pBtn_motorOutSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -637,7 +648,7 @@ void MainWindow::on_pBtn_motorOutSelfCheck_clicked()
 void MainWindow::on_pBtn_motorInSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -645,7 +656,7 @@ void MainWindow::on_pBtn_motorInSelfCheck_clicked()
 void MainWindow::on_pBtn_buildPressSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -653,7 +664,7 @@ void MainWindow::on_pBtn_buildPressSelfCheck_clicked()
 void MainWindow::on_pBtn_airLightSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -661,7 +672,7 @@ void MainWindow::on_pBtn_airLightSelfCheck_clicked()
 void MainWindow::on_pBtn_pumpSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -669,7 +680,7 @@ void MainWindow::on_pBtn_pumpSelfCheck_clicked()
 void MainWindow::on_pBtn_currentSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -680,7 +691,7 @@ void MainWindow::on_pBtn_selfDefineMsg_clicked()
     QPushButton *pBtn = ((QPushButton*)sender());
     QString strContext = ui->textEdit_selfDefineMsg->toPlainText();
     qDebug() << strContext;
-    QString strHead = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Others);
+    QString strHead = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Others);
     QString strMsg = strHead.append(strContext);
     // send msg
     QByteArray stByteMsg = QByteArray::fromHex(strMsg.toUtf8());
@@ -693,7 +704,7 @@ void MainWindow::on_pBtn_selfDefineMsg_clicked()
 void MainWindow::on_pBtn_fixMotorClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -701,7 +712,7 @@ void MainWindow::on_pBtn_fixMotorClose_clicked()
 void MainWindow::on_pBtn_fixMotorOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -719,7 +730,7 @@ void MainWindow::on_pBtn_ledSelect_clicked()
 void MainWindow::on_pBtn_mixingMotorSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -727,7 +738,7 @@ void MainWindow::on_pBtn_mixingMotorSelfCheck_clicked()
 void MainWindow::on_pBtn_turnMotorSelfCheck_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CheckAndAging);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_CheckAndAging);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -736,7 +747,7 @@ void MainWindow::on_pBtn_turnMotorSelfCheck_clicked()
 void MainWindow::on_pBtn_getPressAddValue_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -770,7 +781,7 @@ void MainWindow::on_pBtn_setPressAddValue_clicked()
 void MainWindow::on_pBtn_getOutInStepAddValue_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -803,7 +814,7 @@ void MainWindow::on_pBtn_setOutInStepAddValue_clicked()
 void MainWindow::on_pBtn_getPumpSpeed_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -838,7 +849,7 @@ void MainWindow::on_pBtn_setPumpSpeed_clicked()
 void MainWindow::on_pBtn_getXKVoltage_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -846,7 +857,7 @@ void MainWindow::on_pBtn_getXKVoltage_clicked()
 void MainWindow::on_pBtn_getCurrentVoltage_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -854,7 +865,7 @@ void MainWindow::on_pBtn_getCurrentVoltage_clicked()
 void MainWindow::on_pBtn_getMicroSwitch_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -862,7 +873,7 @@ void MainWindow::on_pBtn_getMicroSwitch_clicked()
 void MainWindow::on_pBtn_getOC_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -870,7 +881,7 @@ void MainWindow::on_pBtn_getOC_clicked()
 void MainWindow::on_pBtn_getTouSheVoltage_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -878,7 +889,7 @@ void MainWindow::on_pBtn_getTouSheVoltage_clicked()
 void MainWindow::on_pBtn_getSanSheVoltage_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -886,7 +897,7 @@ void MainWindow::on_pBtn_getSanSheVoltage_clicked()
 void MainWindow::on_pBtn_getElectrol_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -894,7 +905,7 @@ void MainWindow::on_pBtn_getElectrol_clicked()
 void MainWindow::on_pBtn_getPressValue_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -902,7 +913,7 @@ void MainWindow::on_pBtn_getPressValue_clicked()
 void MainWindow::on_pBt_getTemp_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -910,7 +921,7 @@ void MainWindow::on_pBt_getTemp_clicked()
 void MainWindow::on_pBtn_getVersion_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -918,7 +929,7 @@ void MainWindow::on_pBtn_getVersion_clicked()
 void MainWindow::on_pBtn_getBioTestMode_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_ParamGet);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_ParamGet);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -1041,7 +1052,7 @@ void MainWindow::on_pBtn_setDRegister_clicked()
 void MainWindow::on_pBtn_turnMotorOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -1051,7 +1062,7 @@ void MainWindow::on_pBtn_turnMotorOpen_clicked()
 void MainWindow::on_pBtn_turnMotorClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -1060,7 +1071,7 @@ void MainWindow::on_pBtn_turnMotorClose_clicked()
 void MainWindow::on_pBtn_mixingMotorOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -1068,7 +1079,7 @@ void MainWindow::on_pBtn_mixingMotorOpen_clicked()
 void MainWindow::on_pBtn_mixingMotorClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
@@ -1076,7 +1087,7 @@ void MainWindow::on_pBtn_mixingMotorClose_clicked()
 void MainWindow::on_pBtn_turnMotorReset_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
-    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_Control);
+    QString msg = Button_Send_Msg_Handler(pBtn, EN_PROTOCOL_CMD_Control);
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
