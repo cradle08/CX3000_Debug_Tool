@@ -142,7 +142,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="widget_Ctrol">
      <attribute name="title">
@@ -186,7 +186,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_Ctrol">
        <attribute name="title">
@@ -848,6 +848,16 @@
      <attribute name="title">
       <string>WBC界面</string>
      </attribute>
+     <widget class="QBloodChartView" name="widget_BloodChartView_WBC" native="true">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>701</width>
+        <height>301</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_RBCPLT">
      <attribute name="title">
@@ -1032,6 +1042,14 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QBloodChartView</class>
+   <extends>QWidget</extends>
+   <header>qbloodchartview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>comboBox_localIP</tabstop>
   <tabstop>lineEdit_localPort</tabstop>

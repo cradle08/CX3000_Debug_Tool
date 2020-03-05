@@ -25,9 +25,13 @@ A
 
 CONFIG += c++11
 
+INCLUDEPATH  += \
+        E:\CX-3000\CX3000_Debug_Tool\
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+        qbloodchartview.cpp \
         qhandledatamsgthread.cpp \
         qhandlestatusmsgthread.cpp \
         qifudp.cpp \
@@ -35,6 +39,7 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
+        qbloodchartview.h \
         qhandledatamsgthread.h \
         qhandlestatusmsgthread.h \
         qifudp.h \

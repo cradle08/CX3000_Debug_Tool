@@ -26,7 +26,7 @@ public:
 
     void run();
 
-    void Handle_Data_Msg(QByteArray *pstByteMsg);
+    void Handle_Data_Msg(QByteArray* pstByteMsg);
 
     QString Handle_Test_Data_Msg(QByteArray *pByteMsg, QString& strKey, quint32 nRecvCmd);
 

@@ -29,9 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("CX-Debug-Tools");
 
-    //Config Init
+     //Config Init
      Config_Init();
-
+     // thread(must init after Config_int)
+     Thread_init();
 
     // init localip combobox
     QList<QHostAddress> stAdrList;
@@ -64,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // disable tabwidget
     Set_TabWight_Enable(false);
     ui->pBtn_selfDefineMsg->setEnabled(false);
-
+    ui->pBtn_UDPClose->setEnabled(false);
 
     // led combobix
     LED_Combobox_Init();
@@ -72,8 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // wbc tab menu init
     //CreatCharts();
 
-    // thread(must init after Config_int)
-    Thread_init();
+
 }
 
 
@@ -1048,7 +1048,7 @@ void MainWindow::on_pBtn_setDRegister_clicked()
 
 }
 
-
+/*
 void MainWindow::on_pBtn_turnMotorOpen_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
@@ -1056,9 +1056,9 @@ void MainWindow::on_pBtn_turnMotorOpen_clicked()
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
+*/
 
-
-
+/*
 void MainWindow::on_pBtn_turnMotorClose_clicked()
 {
     QPushButton *pBtn = ((QPushButton*)sender());
@@ -1066,6 +1066,7 @@ void MainWindow::on_pBtn_turnMotorClose_clicked()
     QString str = pBtn->text().append(":").append(msg);
     ui->textEdit_backMsgCtrolMenu->append(str);
 }
+*/
 
 
 void MainWindow::on_pBtn_mixingMotorOpen_clicked()

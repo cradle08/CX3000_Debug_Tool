@@ -39,17 +39,25 @@ void QHandleDataMsgThread::run()
         if(!m_pstMsgQueue->stDataMsgQueue.isEmpty())
         {
             // handle data msg
-            QByteArray *pstMsg = m_pstMsgQueue->stStatusMsgQueue.dequeue();
-            Handle_Data_Msg(pstMsg);
-            delete pstMsg;
+            qDebug() << "Data Thread Start Handle Msg";
+            //QByteArray *pstMsg = m_pstMsgQueue->stStatusMsgQueue.dequeue();
+            QByteArray *pstMsg = m_pstMsgQueue->stDataMsgQueue.dequeue();   //takeFirst();
+            qDebug() << "pstMsg Addr:" << pstMsg;
+            if(pstMsg != nullptr)
+            {
+                qDebug() << "pstMsg 2 Addr:" << pstMsg;
+                Handle_Data_Msg(pstMsg);
+                qDebug() << "Data Thread Start Handle nLen" <<pstMsg->size() << "Msg Addr:" << pstMsg;
+                delete pstMsg;
+            }
         }
     }
 }
 
 
-void QHandleDataMsgThread::Handle_Data_Msg(QByteArray *pstByteMsg)
+void QHandleDataMsgThread::Handle_Data_Msg(QByteArray* pstByteMsg)
 {
-    qDebug() << "Handle Data Msg Thread, Recv Msg: " << *pstByteMsg;
+    qDebug() << "Handle Data Msg Thread, Recv Msg: " << pstByteMsg;
 
     QByteArray *pstDataMsg = pstByteMsg;
     QString strKey, strInfo;
@@ -60,15 +68,17 @@ void QHandleDataMsgThread::Handle_Data_Msg(QByteArray *pstByteMsg)
     switch (nCmdType) {
         case EN_PROTOCOL_CMD_Test:
            {
-                nRecvCmd = pstDataMsg->mid(4, 4).toUInt();
+                //qDebug() << "EN_PROTOCOL_CMD_Test Start:" << pstDataMsg->mid(4, 4).toHex();
+                nRecvCmd = pstDataMsg->mid(4, 4).toHex().toUInt();
                 m_pstConfigIni->beginGroup("Test");
                 QStringList strList = m_pstConfigIni->allKeys();
                 foreach(QString strTempKey, strList)
                 {
                     QString strSendMsg = m_pstConfigIni->value(strTempKey).toString();
-                    nSendCmd = strSendMsg.mid(4, 4).toUInt();
+                    nSendCmd = strSendMsg.mid(8, 8).toUInt();
+                    //qDebug() << "nRecvCmd:" << nRecvCmd << "nSendCmd:" << nSendCmd << "strTempKey:" << strTempKey;
                     if(nRecvCmd - nSendCmd == 77000000)
-                    {
+                    {                        
                         strKey = strTempKey;
                         break;
                     }
@@ -90,6 +100,8 @@ void QHandleDataMsgThread::Handle_Data_Msg(QByteArray *pstByteMsg)
 
 QString QHandleDataMsgThread::Handle_Test_Data_Msg(QByteArray *pByteMsg, QString& strKey, quint32 nRecvCmd)
 {
+    qDebug() << "Handle_Test_Data_Msg Start ...";
+    qDebug() << "strKey:" << strKey;
     if(strKey.compare("WBCTest") == 0)
     {
         Handle_WBC_Test_Data_Msg(pByteMsg, strKey, nRecvCmd);
@@ -122,9 +134,10 @@ QString QHandleDataMsgThread::Handle_Test_Data_Msg(QByteArray *pByteMsg, QString
 
 QString QHandleDataMsgThread::Handle_WBC_Test_Data_Msg(QByteArray *pByteMsg, QString& strKey, quint32 nRecvCmd)
 {
+    quint32 nNumber = pByteMsg->mid(8, 4).toHex().toUInt();
+    qDebug() << "Handle_WBC_Test_Data_Msg Start, number:" << nNumber;
 
-
-
+    m_ui->widget_BloodChartView_WBC->Update(pByteMsg, nNumber);
 }
 
 //QString QHandleDataMsgThread::Handle_RBC_Data_Msg(QByteArray *pByteMsg, QString& strKey, quint32 nRecvCmd)

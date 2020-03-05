@@ -2,7 +2,8 @@
 
 QMsgQueue::QMsgQueue()
 {
-
+    stDataMsgQueue.clear();
+    stStatusMsgQueue.clear();
 }
 
 

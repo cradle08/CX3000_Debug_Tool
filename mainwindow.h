@@ -5,6 +5,8 @@
 #include "qhandledatamsgthread.h"
 #include "qhandlestatusmsgthread.h"
 #include "qmsgqueue.h"
+#include "qbloodchartview.h"
+#include "ui_mainwindow.h"
 
 #include <QMainWindow>
 #include <QUdpSocket>
@@ -21,8 +23,6 @@
 namespace Ui {
     class MainWindow;
 }
-
-
 
 
 class MainWindow : public QMainWindow
@@ -186,9 +186,9 @@ private slots:
 
     void on_pBtn_setDRegister_clicked();
 
-    void on_pBtn_turnMotorOpen_clicked();
+    //void on_pBtn_turnMotorOpen_clicked();
 
-    void on_pBtn_turnMotorClose_clicked();
+    //void on_pBtn_turnMotorClose_clicked();
 
     void on_pBtn_mixingMotorOpen_clicked();
 

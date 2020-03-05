@@ -69,13 +69,16 @@ void QIfUdp::Recv_Msg_Handler()
     unsigned short nRecvPort;
     while(m_pstSocketUdp->hasPendingDatagrams())
     {
+        qDebug() << "-----------Start------------------";
         int nLen = (int)m_pstSocketUdp->pendingDatagramSize();
         QByteArray *pRecvData = new QByteArray(nLen, 0);
+        qDebug() << "nLen" << nLen << "memory:" << pRecvData;
+
         if(nLen > 0)
         {
             m_pstSocketUdp->readDatagram(pRecvData->data(), nLen, &stRecvAddr, &nRecvPort);
-            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort;
-            qDebug() << "IfUdp Recv Status Msg: " << *pRecvData;
+            qDebug() << "RecvIP:" << stRecvAddr.toString()<<" RecvPort:"<<nRecvPort << "Msg Addr:" << pRecvData;
+
         }else {
             qDebug() << "recv msg len <= 0";
             continue;
@@ -83,11 +86,11 @@ void QIfUdp::Recv_Msg_Handler()
         //
         if(pRecvData->at(3) == EN_MSG_TYPE_DATA) // status msg
         {
-
+           qDebug() << "IfUdp Recv Data Len "<< pRecvData->size() << "addr: "<< pRecvData;// <<"Msg:" << *pRecvData;
            m_pstMsgQueue->stDataMsgQueue.enqueue(pRecvData);
 
         }else if(pRecvData->at(3) == EN_MSG_TYPE_STATUS){ // data msg
-
+            qDebug() << "IfUdp Recv Status Msg: " << *pRecvData;
             m_pstMsgQueue->stStatusMsgQueue.enqueue(pRecvData);
         }else { // error msg
             qDebug() <<"Recv Error Msg: " << pRecvData->data();
